@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     # you can only modify this to add your testcase
     TEST_DIRS = [
-                './Easy_H/',
+                './Easy/',
                 ]
     # you can only modify this to add your testcase
 
