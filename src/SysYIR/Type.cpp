@@ -240,7 +240,7 @@ ArrayType::ArrayType(Type *contained, unsigned num_elements)
 
 bool ArrayType::is_valid_element_type(Type *ty)
 {
-    return ty->is_integer_type()||ty->is_array_type();
+    return ty->is_integer_type()||ty->is_array_type()||ty->is_float_type();
 }
 
 ArrayType *ArrayType::get(Type *contained, unsigned num_elements)
