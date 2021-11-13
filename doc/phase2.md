@@ -30,8 +30,9 @@ SysY IR（由助教编写的LLVM IR的轻量级C++接口）。
 cmake ..
 make
 ```
-你可以得到对应`gcd_array_generator.cpp`的可执行文件。  
+你可以得到对应`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`，`go_upstairs_gen.cpp`的可执行文件`assign_generator`，`func_generator`，`if_generator`，`while_generator`，`go_upstairs_generator`  
+之后直接执行可执行文件即可得到对应`.ll`文件：  
 ``` shell
+# 在build文件夹内
 ./go_upstairs_generator
 ```
-即可执行所得到的可执行文件, 打印出与go_upstairs.c逻辑相同的LLVM IR代码
