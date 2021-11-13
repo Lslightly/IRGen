@@ -1,6 +1,6 @@
 #include <iostream>
-#include "SysYBuilder.hpp"
-#include "SysYDriver.h"
+#include "SysYFBuilder.hpp"
+#include "SysYFDriver.h"
 #include "SyntaxTreePrinter.h"
 #include "ErrorReporter.h"
 
@@ -14,8 +14,8 @@ void print_help(const std::string& exe_name) {
 
 int main(int argc, char *argv[])
 {
-    SysYBuilder builder;
-    SysYDriver driver;
+    SysYFBuilder builder;
+    SysYFDriver driver;
     SyntaxTreePrinter printer;
     ErrorReporter reporter(std::cerr);
 

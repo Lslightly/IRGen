@@ -1,5 +1,5 @@
-#ifndef _SYSY_INSTRUCTION_H_
-#define _SYSY_INSTRUCTION_H_
+#ifndef _SYSYF_INSTRUCTION_H_
+#define _SYSYF_INSTRUCTION_H_
 
 #include "User.h"
 #include "Type.h"
@@ -402,4 +402,4 @@ private:
 
 };
 
-#endif // _SYSY_INSTRUCTION_H_
+#endif // _SYSYF_INSTRUCTION_H_

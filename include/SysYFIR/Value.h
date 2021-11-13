@@ -1,5 +1,5 @@
-#ifndef _SYSY_VALUE_H_
-#define _SYSY_VALUE_H_
+#ifndef _SYSYF_VALUE_H_
+#define _SYSYF_VALUE_H_
 
 #include <string>
 #include <list>
@@ -47,4 +47,4 @@ private:
     std::string name_;    // should we put name field here ?
 };
 
-#endif // _SYSY_VALUE_H_
+#endif // _SYSYF_VALUE_H_

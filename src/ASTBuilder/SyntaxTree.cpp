@@ -1,4 +1,3 @@
-
 #include "SyntaxTree.h"
 
 using namespace SyntaxTree;

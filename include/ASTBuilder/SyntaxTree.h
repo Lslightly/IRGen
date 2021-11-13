@@ -1,5 +1,5 @@
-#ifndef _SYSY_SYNTAX_TREE_H_
-#define _SYSY_SYNTAX_TREE_H_
+#ifndef _SYSYF_SYNTAX_TREE_H_
+#define _SYSYF_SYNTAX_TREE_H_
 
 #include <vector>
 #include <memory>
@@ -330,4 +330,4 @@ public:
 } 
 // end namespace SyntaxTree
 
-#endif // _SYSY_SYNTAX_TREE_H_
+#endif // _SYSYF_SYNTAX_TREE_H_

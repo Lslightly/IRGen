@@ -38,16 +38,16 @@
 
 
 
-#include "SysYParser.h"
+#include "SysYFParser.h"
 
 
 // Unqualified %code blocks.
-#line 35 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 35 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
 
-#include "SysYDriver.h"
+#include "SysYFDriver.h"
 #define yylex driver.lexer.yylex
 
-#line 51 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 51 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
 
 
 #ifndef YY_
@@ -139,10 +139,10 @@
 #define YYRECOVERING()  (!!yyerrstatus_)
 
 namespace yy {
-#line 143 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 143 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
 
   /// Build a parser object.
-  SysYParser::SysYParser (SysYDriver& driver_yyarg)
+  SysYFParser::SysYFParser (SysYFDriver& driver_yyarg)
 #if YYDEBUG
     : yydebug_ (false),
       yycdebug_ (&std::cerr),
@@ -152,10 +152,10 @@ namespace yy {
       driver (driver_yyarg)
   {}
 
-  SysYParser::~SysYParser ()
+  SysYFParser::~SysYFParser ()
   {}
 
-  SysYParser::syntax_error::~syntax_error () YY_NOEXCEPT YY_NOTHROW
+  SysYFParser::syntax_error::~syntax_error () YY_NOEXCEPT YY_NOTHROW
   {}
 
   /*---------------.
@@ -165,33 +165,33 @@ namespace yy {
 
 
   // by_state.
-  SysYParser::by_state::by_state () YY_NOEXCEPT
+  SysYFParser::by_state::by_state () YY_NOEXCEPT
     : state (empty_state)
   {}
 
-  SysYParser::by_state::by_state (const by_state& that) YY_NOEXCEPT
+  SysYFParser::by_state::by_state (const by_state& that) YY_NOEXCEPT
     : state (that.state)
   {}
 
   void
-  SysYParser::by_state::clear () YY_NOEXCEPT
+  SysYFParser::by_state::clear () YY_NOEXCEPT
   {
     state = empty_state;
   }
 
   void
-  SysYParser::by_state::move (by_state& that)
+  SysYFParser::by_state::move (by_state& that)
   {
     state = that.state;
     that.clear ();
   }
 
-  SysYParser::by_state::by_state (state_type s) YY_NOEXCEPT
+  SysYFParser::by_state::by_state (state_type s) YY_NOEXCEPT
     : state (s)
   {}
 
-  SysYParser::symbol_kind_type
-  SysYParser::by_state::kind () const YY_NOEXCEPT
+  SysYFParser::symbol_kind_type
+  SysYFParser::by_state::kind () const YY_NOEXCEPT
   {
     if (state == empty_state)
       return symbol_kind::S_YYEMPTY;
@@ -199,10 +199,10 @@ namespace yy {
       return YY_CAST (symbol_kind_type, yystos_[+state]);
   }
 
-  SysYParser::stack_symbol_type::stack_symbol_type ()
+  SysYFParser::stack_symbol_type::stack_symbol_type ()
   {}
 
-  SysYParser::stack_symbol_type::stack_symbol_type (YY_RVREF (stack_symbol_type) that)
+  SysYFParser::stack_symbol_type::stack_symbol_type (YY_RVREF (stack_symbol_type) that)
     : super_type (YY_MOVE (that.state), YY_MOVE (that.location))
   {
     switch (that.kind ())
@@ -311,7 +311,7 @@ namespace yy {
 #endif
   }
 
-  SysYParser::stack_symbol_type::stack_symbol_type (state_type s, YY_MOVE_REF (symbol_type) that)
+  SysYFParser::stack_symbol_type::stack_symbol_type (state_type s, YY_MOVE_REF (symbol_type) that)
     : super_type (s, YY_MOVE (that.location))
   {
     switch (that.kind ())
@@ -419,8 +419,8 @@ namespace yy {
   }
 
 #if YY_CPLUSPLUS < 201103L
-  SysYParser::stack_symbol_type&
-  SysYParser::stack_symbol_type::operator= (const stack_symbol_type& that)
+  SysYFParser::stack_symbol_type&
+  SysYFParser::stack_symbol_type::operator= (const stack_symbol_type& that)
   {
     state = that.state;
     switch (that.kind ())
@@ -527,8 +527,8 @@ namespace yy {
     return *this;
   }
 
-  SysYParser::stack_symbol_type&
-  SysYParser::stack_symbol_type::operator= (stack_symbol_type& that)
+  SysYFParser::stack_symbol_type&
+  SysYFParser::stack_symbol_type::operator= (stack_symbol_type& that)
   {
     state = that.state;
     switch (that.kind ())
@@ -640,7 +640,7 @@ namespace yy {
 
   template <typename Base>
   void
-  SysYParser::yy_destroy_ (const char* yymsg, basic_symbol<Base>& yysym) const
+  SysYFParser::yy_destroy_ (const char* yymsg, basic_symbol<Base>& yysym) const
   {
     if (yymsg)
       YY_SYMBOL_PRINT (yymsg, yysym);
@@ -649,7 +649,7 @@ namespace yy {
 #if YYDEBUG
   template <typename Base>
   void
-  SysYParser::yy_print_ (std::ostream& yyo, const basic_symbol<Base>& yysym) const
+  SysYFParser::yy_print_ (std::ostream& yyo, const basic_symbol<Base>& yysym) const
   {
     std::ostream& yyoutput = yyo;
     YY_USE (yyoutput);
@@ -668,7 +668,7 @@ namespace yy {
 #endif
 
   void
-  SysYParser::yypush_ (const char* m, YY_MOVE_REF (stack_symbol_type) sym)
+  SysYFParser::yypush_ (const char* m, YY_MOVE_REF (stack_symbol_type) sym)
   {
     if (m)
       YY_SYMBOL_PRINT (m, sym);
@@ -676,7 +676,7 @@ namespace yy {
   }
 
   void
-  SysYParser::yypush_ (const char* m, state_type s, YY_MOVE_REF (symbol_type) sym)
+  SysYFParser::yypush_ (const char* m, state_type s, YY_MOVE_REF (symbol_type) sym)
   {
 #if 201103L <= YY_CPLUSPLUS
     yypush_ (m, stack_symbol_type (s, std::move (sym)));
@@ -687,40 +687,40 @@ namespace yy {
   }
 
   void
-  SysYParser::yypop_ (int n)
+  SysYFParser::yypop_ (int n)
   {
     yystack_.pop (n);
   }
 
 #if YYDEBUG
   std::ostream&
-  SysYParser::debug_stream () const
+  SysYFParser::debug_stream () const
   {
     return *yycdebug_;
   }
 
   void
-  SysYParser::set_debug_stream (std::ostream& o)
+  SysYFParser::set_debug_stream (std::ostream& o)
   {
     yycdebug_ = &o;
   }
 
 
-  SysYParser::debug_level_type
-  SysYParser::debug_level () const
+  SysYFParser::debug_level_type
+  SysYFParser::debug_level () const
   {
     return yydebug_;
   }
 
   void
-  SysYParser::set_debug_level (debug_level_type l)
+  SysYFParser::set_debug_level (debug_level_type l)
   {
     yydebug_ = l;
   }
 #endif // YYDEBUG
 
-  SysYParser::state_type
-  SysYParser::yy_lr_goto_state_ (state_type yystate, int yysym)
+  SysYFParser::state_type
+  SysYFParser::yy_lr_goto_state_ (state_type yystate, int yysym)
   {
     int yyr = yypgoto_[yysym - YYNTOKENS] + yystate;
     if (0 <= yyr && yyr <= yylast_ && yycheck_[yyr] == yystate)
@@ -730,25 +730,25 @@ namespace yy {
   }
 
   bool
-  SysYParser::yy_pact_value_is_default_ (int yyvalue)
+  SysYFParser::yy_pact_value_is_default_ (int yyvalue)
   {
     return yyvalue == yypact_ninf_;
   }
 
   bool
-  SysYParser::yy_table_value_is_error_ (int yyvalue)
+  SysYFParser::yy_table_value_is_error_ (int yyvalue)
   {
     return yyvalue == yytable_ninf_;
   }
 
   int
-  SysYParser::operator() ()
+  SysYFParser::operator() ()
   {
     return parse ();
   }
 
   int
-  SysYParser::parse ()
+  SysYFParser::parse ()
   {
     int yyn;
     /// Length of the RHS of the rule being reduced.
@@ -775,13 +775,13 @@ namespace yy {
 
 
     // User initialization code.
-#line 24 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 24 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
 {
 // Initialize the initial location.
 yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
 }
 
-#line 785 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 785 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
 
 
     /* Initialize the stack.  The initial state will be set in
@@ -1011,107 +1011,107 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
           switch (yyn)
             {
   case 2: // Begin: CompUnit END
-#line 106 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 106 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
     yystack_[1].value.as < SyntaxTree::Assembly* > ()->loc = yylhs.location;
     driver.root = yystack_[1].value.as < SyntaxTree::Assembly* > ();
     return 0;
   }
-#line 1021 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1021 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 3: // CompUnit: CompUnit GlobalDecl
-#line 113 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 113 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                             {
 		yystack_[1].value.as < SyntaxTree::Assembly* > ()->global_defs.insert(yystack_[1].value.as < SyntaxTree::Assembly* > ()->global_defs.end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().end());
 		yylhs.value.as < SyntaxTree::Assembly* > ()=yystack_[1].value.as < SyntaxTree::Assembly* > ();
 	}
-#line 1030 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1030 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 4: // CompUnit: GlobalDecl
-#line 117 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 117 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
 		yylhs.value.as < SyntaxTree::Assembly* > ()=new SyntaxTree::Assembly();
 		yylhs.value.as < SyntaxTree::Assembly* > ()->global_defs.insert(yylhs.value.as < SyntaxTree::Assembly* > ()->global_defs.end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().end());
   }
-#line 1039 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1039 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 5: // GlobalDecl: ConstDecl
-#line 123 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 123 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ()=SyntaxTree::PtrList<SyntaxTree::GlobalDef>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().insert(yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().end());
   }
-#line 1048 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1048 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 6: // GlobalDecl: VarDecl
-#line 127 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 127 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ()=SyntaxTree::PtrList<SyntaxTree::GlobalDef>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().insert(yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().end());
   }
-#line 1057 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1057 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 7: // GlobalDecl: FuncDef
-#line 131 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 131 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
            {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ()=SyntaxTree::PtrList<SyntaxTree::GlobalDef>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::GlobalDef> > ().push_back(SyntaxTree::Ptr<SyntaxTree::GlobalDef>(yystack_[0].value.as < SyntaxTree::FuncDef* > ()));
   }
-#line 1066 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1066 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 8: // ConstDecl: CONST BType ConstDefList SEMICOLON
-#line 137 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 137 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                             {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ();
     for (auto &node : yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()) {
       node->btype = yystack_[2].value.as < SyntaxTree::Type > ();
     }
   }
-#line 1077 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1077 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 9: // ConstDefList: ConstDefList COMMA ConstDef
-#line 144 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 144 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                         {
     yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().push_back(SyntaxTree::Ptr<SyntaxTree::VarDef>(yystack_[0].value.as < SyntaxTree::VarDef* > ()));
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ();
   }
-#line 1086 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1086 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 10: // ConstDefList: ConstDef
-#line 148 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 148 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                   {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=SyntaxTree::PtrList<SyntaxTree::VarDef>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().push_back(SyntaxTree::Ptr<SyntaxTree::VarDef>(yystack_[0].value.as < SyntaxTree::VarDef* > ()));
   }
-#line 1095 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1095 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 11: // BType: INT
-#line 154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
          {
   yylhs.value.as < SyntaxTree::Type > ()=SyntaxTree::Type::INT;
   }
-#line 1103 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1103 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 12: // BType: FLOAT
-#line 157 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 157 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
   yylhs.value.as < SyntaxTree::Type > ()=SyntaxTree::Type::FLOAT;
   }
-#line 1111 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1111 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 13: // ConstDef: IDENTIFIER ArrayExpList ASSIGN InitVal
-#line 163 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 163 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                {
     yylhs.value.as < SyntaxTree::VarDef* > ()=new SyntaxTree::VarDef();
     yylhs.value.as < SyntaxTree::VarDef* > ()->is_constant = true;
@@ -1121,40 +1121,40 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::VarDef* > ()->initializers = SyntaxTree::Ptr<SyntaxTree::InitVal>(yystack_[0].value.as < SyntaxTree::InitVal* > ());
     yylhs.value.as < SyntaxTree::VarDef* > ()->loc = yylhs.location;
   }
-#line 1125 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1125 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 14: // VarDecl: BType VarDefList SEMICOLON
-#line 174 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 174 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                   {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ();
     for (auto &node : yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()) {
       node->btype = yystack_[2].value.as < SyntaxTree::Type > ();
     }
   }
-#line 1136 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1136 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 15: // VarDefList: VarDefList COMMA VarDef
-#line 182 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 182 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                   {
     yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().push_back(SyntaxTree::Ptr<SyntaxTree::VarDef>(yystack_[0].value.as < SyntaxTree::VarDef* > ()));
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ();
   }
-#line 1145 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1145 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 16: // VarDefList: VarDef
-#line 186 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 186 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                 {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ()=SyntaxTree::PtrList<SyntaxTree::VarDef>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().push_back(SyntaxTree::Ptr<SyntaxTree::VarDef>(yystack_[0].value.as < SyntaxTree::VarDef* > ()));
   }
-#line 1154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 17: // VarDef: IDENTIFIER ArrayExpList
-#line 192 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 192 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                               {
     yylhs.value.as < SyntaxTree::VarDef* > ()=new SyntaxTree::VarDef();
     yylhs.value.as < SyntaxTree::VarDef* > ()->name=yystack_[1].value.as < std::string > ();
@@ -1162,11 +1162,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::VarDef* > ()->is_inited = false;
     yylhs.value.as < SyntaxTree::VarDef* > ()->loc = yylhs.location;
   }
-#line 1166 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1166 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 18: // VarDef: IDENTIFIER ArrayExpList ASSIGN InitVal
-#line 199 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 199 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                 {
     yylhs.value.as < SyntaxTree::VarDef* > () = new SyntaxTree::VarDef();
     yylhs.value.as < SyntaxTree::VarDef* > ()->name = yystack_[3].value.as < std::string > ();
@@ -1175,28 +1175,28 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::VarDef* > ()->is_inited = true;
     yylhs.value.as < SyntaxTree::VarDef* > ()->loc = yylhs.location;
   }
-#line 1179 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1179 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 19: // ArrayExpList: ArrayExpList LBRACKET Exp RBRACKET
-#line 209 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 209 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                {
     yystack_[3].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ().push_back(SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[1].value.as < SyntaxTree::Expr* > ()));
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ()=yystack_[3].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ();
   }
-#line 1188 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1188 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 20: // ArrayExpList: %empty
-#line 213 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 213 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                 {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ()=SyntaxTree::PtrList<SyntaxTree::Expr>();
   }
-#line 1196 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1196 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 21: // InitVal: Exp
-#line 218 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 218 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
             {
     yylhs.value.as < SyntaxTree::InitVal* > () = new SyntaxTree::InitVal();
     yylhs.value.as < SyntaxTree::InitVal* > ()->isExp = true;
@@ -1204,28 +1204,28 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::InitVal* > ()->expr = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[0].value.as < SyntaxTree::Expr* > ());
     yylhs.value.as < SyntaxTree::InitVal* > ()->loc = yylhs.location;
   }
-#line 1208 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1208 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 22: // InitVal: LBRACE InitValList RBRACE
-#line 225 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 225 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                              {
     yylhs.value.as < SyntaxTree::InitVal* > () = yystack_[1].value.as < SyntaxTree::InitVal* > ();
   }
-#line 1216 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1216 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 23: // InitValList: CommaInitValList InitVal
-#line 230 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 230 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                      {
     yystack_[1].value.as < SyntaxTree::InitVal* > ()->elementList.push_back(SyntaxTree::Ptr<SyntaxTree::InitVal>(yystack_[0].value.as < SyntaxTree::InitVal* > ()));
     yylhs.value.as < SyntaxTree::InitVal* > () = yystack_[1].value.as < SyntaxTree::InitVal* > ();
   }
-#line 1225 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1225 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 24: // InitValList: %empty
-#line 234 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 234 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::InitVal* > () = new SyntaxTree::InitVal();
     yylhs.value.as < SyntaxTree::InitVal* > ()->isExp = false;
@@ -1234,20 +1234,20 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::InitVal* > ()->expr = nullptr;
     yylhs.value.as < SyntaxTree::InitVal* > ()->loc = yylhs.location;
   }
-#line 1238 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1238 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 25: // CommaInitValList: CommaInitValList InitVal COMMA
-#line 244 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 244 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                 {
     yystack_[2].value.as < SyntaxTree::InitVal* > ()->elementList.push_back(SyntaxTree::Ptr<SyntaxTree::InitVal>(yystack_[1].value.as < SyntaxTree::InitVal* > ()));
     yylhs.value.as < SyntaxTree::InitVal* > () = yystack_[2].value.as < SyntaxTree::InitVal* > ();
   }
-#line 1247 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1247 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 26: // CommaInitValList: %empty
-#line 248 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 248 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::InitVal* > () = new SyntaxTree::InitVal();
     yylhs.value.as < SyntaxTree::InitVal* > ()->isExp = false;
@@ -1256,45 +1256,45 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::InitVal* > ()->expr = nullptr;
     yylhs.value.as < SyntaxTree::InitVal* > ()->loc = yylhs.location;
   }
-#line 1260 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1260 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 27: // ExpList: CommaExpList Exp
-#line 258 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 258 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                         {
     yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ().push_back(SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[0].value.as < SyntaxTree::Expr* > ()));
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > () = yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ();
   }
-#line 1269 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1269 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 28: // ExpList: %empty
-#line 262 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 262 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > () = SyntaxTree::PtrList<SyntaxTree::Expr>();
   }
-#line 1277 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1277 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 29: // CommaExpList: CommaExpList Exp COMMA
-#line 267 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 267 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                    {
     yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ().push_back(SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[1].value.as < SyntaxTree::Expr* > ()));
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > () = yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ();
   }
-#line 1286 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1286 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 30: // CommaExpList: %empty
-#line 271 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 271 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > () = SyntaxTree::PtrList<SyntaxTree::Expr>();
   }
-#line 1294 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1294 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 31: // FuncFParam: BType IDENTIFIER ArrayExpList
-#line 277 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 277 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                         {
   yylhs.value.as < SyntaxTree::FuncParam* > () = new SyntaxTree::FuncParam();
   yylhs.value.as < SyntaxTree::FuncParam* > ()->param_type = yystack_[2].value.as < SyntaxTree::Type > ();
@@ -1302,11 +1302,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   yylhs.value.as < SyntaxTree::FuncParam* > ()->array_index = yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ();
   yylhs.value.as < SyntaxTree::FuncParam* > ()->loc = yylhs.location;
 }
-#line 1306 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1306 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 32: // FuncFParam: BType IDENTIFIER LRBRACKET ArrayExpList
-#line 284 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 284 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                          {
    yylhs.value.as < SyntaxTree::FuncParam* > () = new SyntaxTree::FuncParam();
    yylhs.value.as < SyntaxTree::FuncParam* > ()->param_type = yystack_[3].value.as < SyntaxTree::Type > ();
@@ -1315,45 +1315,45 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
    yylhs.value.as < SyntaxTree::FuncParam* > ()->array_index.insert(yylhs.value.as < SyntaxTree::FuncParam* > ()->array_index.begin(),nullptr);
    yylhs.value.as < SyntaxTree::FuncParam* > ()->loc = yylhs.location;
 }
-#line 1319 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1319 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 33: // FParamList: CommaFParamList FuncFParam
-#line 294 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 294 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                       {
   yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > ().push_back(SyntaxTree::Ptr<SyntaxTree::FuncParam>(yystack_[0].value.as < SyntaxTree::FuncParam* > ()));
   yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > () = yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > ();
 }
-#line 1328 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1328 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 34: // FParamList: %empty
-#line 298 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 298 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
         {
   yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > () = SyntaxTree::PtrList<SyntaxTree::FuncParam>();
 }
-#line 1336 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1336 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 35: // CommaFParamList: CommaFParamList FuncFParam COMMA
-#line 303 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 303 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                 {
   yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > ().push_back(SyntaxTree::Ptr<SyntaxTree::FuncParam>(yystack_[1].value.as < SyntaxTree::FuncParam* > ()));
   yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > () = yystack_[2].value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > ();
 }
-#line 1345 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1345 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 36: // CommaFParamList: %empty
-#line 307 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 307 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
         {
   yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::FuncParam> > () = SyntaxTree::PtrList<SyntaxTree::FuncParam>();
 }
-#line 1353 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1353 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 37: // FuncDef: BType IDENTIFIER LPARENTHESE FParamList RPARENTHESE Block
-#line 311 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 311 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                                  {
     yylhs.value.as < SyntaxTree::FuncDef* > () = new SyntaxTree::FuncDef();
     yylhs.value.as < SyntaxTree::FuncDef* > ()->ret_type = yystack_[5].value.as < SyntaxTree::Type > ();
@@ -1364,11 +1364,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::FuncDef* > ()->body = SyntaxTree::Ptr<SyntaxTree::BlockStmt>(yystack_[0].value.as < SyntaxTree::BlockStmt* > ());
     yylhs.value.as < SyntaxTree::FuncDef* > ()->loc = yylhs.location;
   }
-#line 1368 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1368 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 38: // FuncDef: VOID IDENTIFIER LPARENTHESE FParamList RPARENTHESE Block
-#line 321 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 321 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                             {
     yylhs.value.as < SyntaxTree::FuncDef* > () = new SyntaxTree::FuncDef();
     yylhs.value.as < SyntaxTree::FuncDef* > ()->ret_type = SyntaxTree::Type::VOID;
@@ -1379,65 +1379,65 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::FuncDef* > ()->body = SyntaxTree::Ptr<SyntaxTree::BlockStmt>(yystack_[0].value.as < SyntaxTree::BlockStmt* > ());
     yylhs.value.as < SyntaxTree::FuncDef* > ()->loc = yylhs.location;
   }
-#line 1383 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1383 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 39: // Block: LBRACE BlockItemList RBRACE
-#line 333 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 333 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                  {
     yylhs.value.as < SyntaxTree::BlockStmt* > () = new SyntaxTree::BlockStmt();
     yylhs.value.as < SyntaxTree::BlockStmt* > ()->body = yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ();
     yylhs.value.as < SyntaxTree::BlockStmt* > ()->loc = yylhs.location;
   }
-#line 1393 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1393 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 40: // BlockItemList: BlockItemList BlockItem
-#line 340 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 340 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                      {
     yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().insert(yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().end());
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > () = yystack_[1].value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ();
   }
-#line 1402 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1402 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 41: // BlockItemList: %empty
-#line 344 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 344 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > () = SyntaxTree::PtrList<SyntaxTree::Stmt>();
   }
-#line 1410 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1410 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 42: // BlockItem: VarDecl
-#line 349 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 349 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > () = SyntaxTree::PtrList<SyntaxTree::Stmt>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().insert(yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().end());
   }
-#line 1419 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1419 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 43: // BlockItem: ConstDecl
-#line 353 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 353 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
              {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > () = SyntaxTree::PtrList<SyntaxTree::Stmt>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().insert(yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().end(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().begin(), yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::VarDef> > ().end());
   }
-#line 1428 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1428 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 44: // BlockItem: Stmt
-#line 357 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 357 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
         {
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > () = SyntaxTree::PtrList<SyntaxTree::Stmt>();
     yylhs.value.as < SyntaxTree::PtrList<SyntaxTree::Stmt> > ().push_back(SyntaxTree::Ptr<SyntaxTree::Stmt>(yystack_[0].value.as < SyntaxTree::Stmt* > ()));
   }
-#line 1437 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1437 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 45: // Stmt: LVal ASSIGN Exp SEMICOLON
-#line 363 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 363 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                               {
     auto temp = new SyntaxTree::AssignStmt();
     temp->target = SyntaxTree::Ptr<SyntaxTree::LVal>(yystack_[3].value.as < SyntaxTree::LVal* > ());
@@ -1445,41 +1445,41 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1449 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1449 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 46: // Stmt: Exp SEMICOLON
-#line 370 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 370 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     auto temp = new SyntaxTree::ExprStmt();
     temp->exp = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[1].value.as < SyntaxTree::Expr* > ());
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1460 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1460 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 47: // Stmt: RETURN OptionRet SEMICOLON
-#line 376 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 376 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                               {
     auto temp = new SyntaxTree::ReturnStmt();
     temp->ret = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[1].value.as < SyntaxTree::Expr* > ());
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1471 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1471 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 48: // Stmt: Block
-#line 382 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 382 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
          {
     yylhs.value.as < SyntaxTree::Stmt* > () = yystack_[0].value.as < SyntaxTree::BlockStmt* > ();
   }
-#line 1479 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1479 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 49: // Stmt: WHILE LPARENTHESE CondExp RPARENTHESE Stmt
-#line 385 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 385 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                               {
     auto temp = new SyntaxTree::WhileStmt();
     temp->cond_exp = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[2].value.as < SyntaxTree::Expr* > ());
@@ -1487,46 +1487,46 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1491 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1491 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 50: // Stmt: IfStmt
-#line 392 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 392 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
            {
     yylhs.value.as < SyntaxTree::Stmt* > () = yystack_[0].value.as < SyntaxTree::Stmt* > ();
   }
-#line 1499 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1499 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 51: // Stmt: BREAK SEMICOLON
-#line 395 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 395 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
     yylhs.value.as < SyntaxTree::Stmt* > () = new SyntaxTree::BreakStmt();
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1508 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1508 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 52: // Stmt: CONTINUE SEMICOLON
-#line 399 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 399 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                        {
     yylhs.value.as < SyntaxTree::Stmt* > () = new SyntaxTree::ContinueStmt();
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1517 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1517 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 53: // Stmt: SEMICOLON
-#line 403 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 403 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
              {
     yylhs.value.as < SyntaxTree::Stmt* > () = new SyntaxTree::EmptyStmt();
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1526 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1526 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 54: // IfStmt: IF LPARENTHESE CondExp RPARENTHESE Stmt
-#line 409 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 409 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                {
     auto temp = new SyntaxTree::IfStmt();
     temp->cond_exp = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[2].value.as < SyntaxTree::Expr* > ());
@@ -1535,11 +1535,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1539 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1539 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 55: // IfStmt: IF LPARENTHESE CondExp RPARENTHESE Stmt ELSE Stmt
-#line 417 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 417 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                       {
     auto temp = new SyntaxTree::IfStmt();
     temp->cond_exp = SyntaxTree::Ptr<SyntaxTree::Expr>(yystack_[4].value.as < SyntaxTree::Expr* > ());
@@ -1548,38 +1548,38 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Stmt* > () = temp;
     yylhs.value.as < SyntaxTree::Stmt* > ()->loc = yylhs.location;
   }
-#line 1552 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1552 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 56: // OptionRet: Exp
-#line 427 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 427 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
              {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1560 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1560 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 57: // OptionRet: %empty
-#line 430 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 430 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::Expr* > () = nullptr;
   }
-#line 1568 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1568 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 58: // LVal: IDENTIFIER ArrayExpList
-#line 435 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 435 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                             {
     yylhs.value.as < SyntaxTree::LVal* > () = new SyntaxTree::LVal();
     yylhs.value.as < SyntaxTree::LVal* > ()->name = yystack_[1].value.as < std::string > ();
     yylhs.value.as < SyntaxTree::LVal* > ()->array_index = yystack_[0].value.as < SyntaxTree::PtrList<SyntaxTree::Expr> > ();
     yylhs.value.as < SyntaxTree::LVal* > ()->loc = yylhs.location;
   }
-#line 1579 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1579 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 59: // Exp: PLUS Exp
-#line 447 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 447 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                         {
     auto temp = new SyntaxTree::UnaryExpr();
     temp->op = SyntaxTree::UnaryOp::PLUS;
@@ -1587,11 +1587,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1591 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1591 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 60: // Exp: MINUS Exp
-#line 454 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 454 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                           {
     auto temp = new SyntaxTree::UnaryExpr();
     temp->op = SyntaxTree::UnaryOp::MINUS;
@@ -1599,11 +1599,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1603 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1603 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 61: // Exp: NOT Exp
-#line 461 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 461 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                       {
     auto temp = new SyntaxTree::UnaryCondExpr();
     temp->op = SyntaxTree::UnaryCondOp::NOT;
@@ -1611,11 +1611,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1615 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1615 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 62: // Exp: Exp PLUS Exp
-#line 468 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 468 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                 {
     auto temp = new SyntaxTree::BinaryExpr();
     temp->op = SyntaxTree::BinOp::PLUS;
@@ -1624,11 +1624,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1628 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1628 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 63: // Exp: Exp MINUS Exp
-#line 476 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 476 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     auto temp = new SyntaxTree::BinaryExpr();
     temp->op = SyntaxTree::BinOp::MINUS;
@@ -1637,11 +1637,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1641 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1641 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 64: // Exp: Exp MULTIPLY Exp
-#line 484 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 484 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
     auto temp = new SyntaxTree::BinaryExpr();
     temp->op = SyntaxTree::BinOp::MULTIPLY;
@@ -1650,11 +1650,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1654 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1654 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 65: // Exp: Exp DIVIDE Exp
-#line 492 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 492 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                   {
     auto temp = new SyntaxTree::BinaryExpr();
     temp->op = SyntaxTree::BinOp::DIVIDE;
@@ -1663,11 +1663,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1667 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1667 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 66: // Exp: Exp MODULO Exp
-#line 500 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 500 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                   {
     auto temp = new SyntaxTree::BinaryExpr();
     temp->op = SyntaxTree::BinOp::MODULO;
@@ -1676,19 +1676,19 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1680 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1680 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 67: // Exp: LPARENTHESE Exp RPARENTHESE
-#line 508 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 508 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[1].value.as < SyntaxTree::Expr* > ();
   }
-#line 1688 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1688 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 68: // Exp: IDENTIFIER LPARENTHESE ExpList RPARENTHESE
-#line 511 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 511 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                                {
     auto temp = new SyntaxTree::FuncCallStmt();
     temp->name = yystack_[3].value.as < std::string > ();
@@ -1696,27 +1696,27 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1700 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1700 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 69: // Exp: LVal
-#line 518 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 518 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
         {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::LVal* > ();
   }
-#line 1708 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1708 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 70: // Exp: Number
-#line 521 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 521 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Literal* > ();
   }
-#line 1716 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1716 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 71: // RelExp: RelExp LT Exp
-#line 526 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 526 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                     {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::LT;
@@ -1725,11 +1725,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1729 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1729 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 72: // RelExp: RelExp LTE Exp
-#line 534 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 534 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::LTE;
@@ -1738,11 +1738,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1742 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1742 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 73: // RelExp: RelExp GT Exp
-#line 542 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 542 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                 {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::GT;
@@ -1751,11 +1751,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1755 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1755 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 74: // RelExp: RelExp GTE Exp
-#line 550 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 550 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::GTE;
@@ -1764,19 +1764,19 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1768 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1768 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 75: // RelExp: Exp
-#line 558 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 558 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
        {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1776 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1776 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 76: // EqExp: EqExp EQ RelExp
-#line 563 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 563 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                      {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::EQ;
@@ -1785,11 +1785,11 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1789 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1789 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 77: // EqExp: EqExp NEQ RelExp
-#line 571 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 571 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                    {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::NEQ;
@@ -1798,19 +1798,19 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1802 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1802 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 78: // EqExp: RelExp
-#line 579 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 579 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1810 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1810 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 79: // LAndExp: LAndExp LOGICAND EqExp
-#line 584 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 584 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                                {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::LAND;
@@ -1819,19 +1819,19 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1823 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1823 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 80: // LAndExp: EqExp
-#line 592 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 592 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
         {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1831 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1831 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 81: // LOrExp: LOrExp LOGICOR LAndExp
-#line 597 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 597 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                               {
     auto temp = new SyntaxTree::BinaryCondExpr();
     temp->op = SyntaxTree::BinaryCondOp::LOR;
@@ -1840,49 +1840,49 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
     yylhs.value.as < SyntaxTree::Expr* > () = temp;
     yylhs.value.as < SyntaxTree::Expr* > ()->loc = yylhs.location;
   }
-#line 1844 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1844 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 82: // LOrExp: LAndExp
-#line 605 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 605 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
           {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1852 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1852 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 83: // CondExp: LOrExp
-#line 610 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 610 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
               {
     yylhs.value.as < SyntaxTree::Expr* > () = yystack_[0].value.as < SyntaxTree::Expr* > ();
   }
-#line 1860 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1860 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 84: // Number: INTCONST
-#line 615 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 615 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                  {
     yylhs.value.as < SyntaxTree::Literal* > () = new SyntaxTree::Literal();
     yylhs.value.as < SyntaxTree::Literal* > ()->literal_type = SyntaxTree::Type::INT;
     yylhs.value.as < SyntaxTree::Literal* > ()->int_const = yystack_[0].value.as < int > ();
     yylhs.value.as < SyntaxTree::Literal* > ()->loc = yylhs.location;
   }
-#line 1871 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1871 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
   case 85: // Number: FLOATCONST
-#line 621 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 621 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
                {
     yylhs.value.as < SyntaxTree::Literal* > () = new SyntaxTree::Literal();
     yylhs.value.as < SyntaxTree::Literal* > ()->literal_type = SyntaxTree::Type::FLOAT;
     yylhs.value.as < SyntaxTree::Literal* > ()->float_const = yystack_[0].value.as < float > ();
     yylhs.value.as < SyntaxTree::Literal* > ()->loc = yylhs.location;
   }
-#line 1882 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1882 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
     break;
 
 
-#line 1886 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 1886 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
 
             default:
               break;
@@ -2055,7 +2055,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   }
 
   void
-  SysYParser::error (const syntax_error& yyexc)
+  SysYFParser::error (const syntax_error& yyexc)
   {
     error (yyexc.location, yyexc.what ());
   }
@@ -2066,7 +2066,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
      apostrophe, a comma, or backslash (other than backslash-backslash).
      YYSTR is taken from yytname.  */
   std::string
-  SysYParser::yytnamerr_ (const char *yystr)
+  SysYFParser::yytnamerr_ (const char *yystr)
   {
     if (*yystr == '"')
       {
@@ -2101,21 +2101,21 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   }
 
   std::string
-  SysYParser::symbol_name (symbol_kind_type yysymbol)
+  SysYFParser::symbol_name (symbol_kind_type yysymbol)
   {
     return yytnamerr_ (yytname_[yysymbol]);
   }
 
 
 
-  // SysYParser::context.
-  SysYParser::context::context (const SysYParser& yyparser, const symbol_type& yyla)
+  // SysYFParser::context.
+  SysYFParser::context::context (const SysYFParser& yyparser, const symbol_type& yyla)
     : yyparser_ (yyparser)
     , yyla_ (yyla)
   {}
 
   int
-  SysYParser::context::expected_tokens (symbol_kind_type yyarg[], int yyargn) const
+  SysYFParser::context::expected_tokens (symbol_kind_type yyarg[], int yyargn) const
   {
     // Actual number of expected tokens
     int yycount = 0;
@@ -2151,7 +2151,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
 
 
   int
-  SysYParser::yy_syntax_error_arguments_ (const context& yyctx,
+  SysYFParser::yy_syntax_error_arguments_ (const context& yyctx,
                                                  symbol_kind_type yyarg[], int yyargn) const
   {
     /* There are many possibilities here to consider:
@@ -2191,7 +2191,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
 
   // Generate an error message.
   std::string
-  SysYParser::yysyntax_error_ (const context& yyctx) const
+  SysYFParser::yysyntax_error_ (const context& yyctx) const
   {
     // Its maximum.
     enum { YYARGS_MAX = 5 };
@@ -2231,12 +2231,12 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   }
 
 
-  const signed char SysYParser::yypact_ninf_ = -116;
+  const signed char SysYFParser::yypact_ninf_ = -116;
 
-  const signed char SysYParser::yytable_ninf_ = -35;
+  const signed char SysYFParser::yytable_ninf_ = -35;
 
   const short
-  SysYParser::yypact_[] =
+  SysYFParser::yypact_[] =
   {
       -8,  -116,   -25,   -18,  -116,     9,    20,  -116,  -116,    -3,
     -116,  -116,    -5,     5,  -116,  -116,  -116,    27,   136,  -116,
@@ -2257,7 +2257,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const signed char
-  SysYParser::yydefact_[] =
+  SysYFParser::yydefact_[] =
   {
        0,    11,     0,     0,    12,     0,     0,     4,     5,     0,
        6,     7,     0,     0,     1,     2,     3,    20,     0,    16,
@@ -2278,7 +2278,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const short
-  SysYParser::yypgoto_[] =
+  SysYFParser::yypgoto_[] =
   {
     -116,  -116,  -116,   180,   112,  -116,    -1,   162,   113,  -116,
      164,   -17,   -35,  -116,  -116,  -116,  -116,  -116,   168,  -116,
@@ -2287,7 +2287,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const signed char
-  SysYParser::yydefgoto_[] =
+  SysYFParser::yydefgoto_[] =
   {
        0,     5,     6,     7,     8,    22,     9,    23,    10,    18,
       19,    25,    52,    66,    67,    83,    84,    40,    28,    29,
@@ -2296,7 +2296,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const short
-  SysYParser::yytable_[] =
+  SysYFParser::yytable_[] =
   {
       54,    56,    13,   104,    30,    12,    61,    54,     1,    14,
       63,    64,    65,    20,   128,   129,   130,    70,     1,    58,
@@ -2321,7 +2321,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const unsigned char
-  SysYParser::yycheck_[] =
+  SysYFParser::yycheck_[] =
   {
       34,    35,     3,    77,    21,    30,    41,    41,    26,     0,
       44,    45,    46,    18,    10,    11,    12,    51,    26,    38,
@@ -2346,7 +2346,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const signed char
-  SysYParser::yystos_[] =
+  SysYFParser::yystos_[] =
   {
        0,    26,    28,    37,    44,    54,    55,    56,    57,    59,
       61,    73,    30,    59,     0,     3,    56,    30,    62,    63,
@@ -2367,7 +2367,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const signed char
-  SysYParser::yyr1_[] =
+  SysYFParser::yyr1_[] =
   {
        0,    53,    54,    55,    55,    56,    56,    56,    57,    58,
       58,    59,    59,    60,    61,    62,    62,    63,    63,    64,
@@ -2381,7 +2381,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   const signed char
-  SysYParser::yyr2_[] =
+  SysYFParser::yyr2_[] =
   {
        0,     2,     2,     2,     1,     1,     1,     1,     4,     3,
        1,     1,     1,     4,     3,     3,     1,     2,     4,     4,
@@ -2399,7 +2399,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   // YYTNAME[SYMBOL-NUM] -- String name of the symbol SYMBOL-NUM.
   // First, the terminals, then, starting at \a YYNTOKENS, nonterminals.
   const char*
-  const SysYParser::yytname_[] =
+  const SysYFParser::yytname_[] =
   {
   "\"end of file\"", "error", "\"invalid token\"", "END", "ERROR", "PLUS",
   "MINUS", "MULTIPLY", "DIVIDE", "MODULO", "LTE", "GT", "GTE", "EQ", "NEQ",
@@ -2421,7 +2421,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
 
 #if YYDEBUG
   const short
-  SysYParser::yyrline_[] =
+  SysYFParser::yyrline_[] =
   {
        0,   106,   106,   113,   117,   123,   127,   131,   137,   144,
      148,   154,   157,   163,   174,   182,   186,   192,   199,   209,
@@ -2435,7 +2435,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   };
 
   void
-  SysYParser::yy_stack_print_ () const
+  SysYFParser::yy_stack_print_ () const
   {
     *yycdebug_ << "Stack now";
     for (stack_type::const_iterator
@@ -2447,7 +2447,7 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
   }
 
   void
-  SysYParser::yy_reduce_print_ (int yyrule) const
+  SysYFParser::yy_reduce_print_ (int yyrule) const
   {
     int yylno = yyrline_[yyrule];
     int yynrhs = yyr2_[yyrule];
@@ -2463,13 +2463,13 @@ yyla.location.begin.filename = yyla.location.end.filename = &driver.file;
 
 
 } // yy
-#line 2467 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.cpp"
+#line 2467 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.cpp"
 
-#line 629 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 629 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
 
 
 // Register errors to the driver:
-void yy::SysYParser::error (const location_type& l,
+void yy::SysYFParser::error (const location_type& l,
                           const std::string& m)
 {
     driver.error(l, m);

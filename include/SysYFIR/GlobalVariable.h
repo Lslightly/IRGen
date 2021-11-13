@@ -1,5 +1,5 @@
-#ifndef _SYSY_GLOBALVARIABLE_H_
-#define _SYSY_GLOBALVARIABLE_H_
+#ifndef _SYSYF_GLOBALVARIABLE_H_
+#define _SYSYF_GLOBALVARIABLE_H_
 
 #include "Module.h"
 #include "User.h"
@@ -19,4 +19,4 @@ public:
     bool is_const() { return is_const_; }
     std::string print();
 };
-#endif //_SYSY_GLOBALVARIABLE_H_
+#endif //_SYSYF_GLOBALVARIABLE_H_

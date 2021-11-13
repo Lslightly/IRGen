@@ -1,5 +1,5 @@
-#ifndef _SYSY_BASICBLOCK_H_
-#define _SYSY_BASICBLOCK_H_
+#ifndef _SYSYF_BASICBLOCK_H_
+#define _SYSYF_BASICBLOCK_H_
 
 #include "Value.h"
 #include "Instruction.h"
@@ -74,4 +74,4 @@ private:
     Function *parent_;
 };
 
-#endif // _SYSY_BASICBLOCK_H_
+#endif // _SYSYF_BASICBLOCK_H_

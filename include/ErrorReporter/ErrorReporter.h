@@ -1,6 +1,5 @@
-
-#ifndef _SYSY_ERROR_REPORTER_H_
-#define _SYSY_ERROR_REPORTER_H_
+#ifndef _SYSYF_ERROR_REPORTER_H_
+#define _SYSYF_ERROR_REPORTER_H_
 
 #include <iostream>
 #include <deque>
@@ -24,4 +23,4 @@ private:
     std::ostream &err;
 };
 
-#endif  // _SYSY_ERROR_REPORTER_H_
+#endif  // _SYSYF_ERROR_REPORTER_H_

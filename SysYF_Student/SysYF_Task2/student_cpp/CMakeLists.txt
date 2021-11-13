@@ -1,6 +1,6 @@
 add_executable(
-    assign_generator
-    assign_gen.cpp
+  assign_generator
+  assign_gen.cpp
 )
 target_link_libraries(
   assign_generator
@@ -30,7 +30,7 @@ add_executable(
   while_gen.cpp
 )
 target_link_libraries(
-    while_generator
+  while_generator
   IRLib
 )
   

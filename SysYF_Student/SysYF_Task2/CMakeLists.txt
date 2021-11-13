@@ -10,8 +10,8 @@ set(SYSYF_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
 # include generated files in project environment
-include_directories(${SYSYF_SOURCE_DIR}include/SysYIR)
-add_subdirectory(${SYSYF_SOURCE_DIR}src/SysYIR src/SysYIR)
+include_directories(${SYSYF_SOURCE_DIR}include/SysYFIR)
+add_subdirectory(${SYSYF_SOURCE_DIR}src/SysYFIR src/SysYFIR)
 
 add_subdirectory(ta_demo)
 add_subdirectory(student_cpp)

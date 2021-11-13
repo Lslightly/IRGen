@@ -1,5 +1,5 @@
-#ifndef _SYSY_TYPE_H_
-#define _SYSY_TYPE_H_
+#ifndef _SYSYF_TYPE_H_
+#define _SYSYF_TYPE_H_
 
 #include <vector>
 #include <iostream>
@@ -143,4 +143,4 @@ private:
     Type *contained_;   // The element type of the ptr.
 };
 
-#endif // _SYSY_TYPE_H_
+#endif // _SYSYF_TYPE_H_

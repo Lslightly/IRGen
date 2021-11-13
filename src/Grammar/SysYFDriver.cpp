@@ -1,22 +1,22 @@
-#include "SysYDriver.h"
-// #include "SysYParser.h"
+#include "SysYFDriver.h"
+// #include "SysYFParser.h"
 
-SysYDriver::SysYDriver()
+SysYFDriver::SysYFDriver()
     : trace_scanning(false), trace_parsing(false)
 {
 }
 
-SysYDriver::~SysYDriver()
+SysYFDriver::~SysYFDriver()
 {
 }
 
-SyntaxTree::Node* SysYDriver::parse(const std::string &f)
+SyntaxTree::Node* SysYFDriver::parse(const std::string &f)
 {
     file = f;
 
     // lexer begin
     scan_begin();
-    yy::SysYParser parser(*this);
+    yy::SysYFParser parser(*this);
     parser.set_debug_level(trace_parsing);
     // parser begin
     parser.parse();
@@ -26,18 +26,18 @@ SyntaxTree::Node* SysYDriver::parse(const std::string &f)
     return this->root;
 }
 
-void SysYDriver::error(const yy::location& l, const std::string& m)
+void SysYFDriver::error(const yy::location& l, const std::string& m)
 {
     std::cerr << l << ": " << m << std::endl;
 }
 
-void SysYDriver::error(const std::string& m)
+void SysYFDriver::error(const std::string& m)
 {
     std::cerr << m << std::endl;
 }
 
 
-void SysYDriver::scan_begin()
+void SysYFDriver::scan_begin()
 {
     lexer.set_debug(trace_scanning);
 
@@ -56,7 +56,7 @@ void SysYDriver::scan_begin()
     }
 }
 
-void SysYDriver::scan_end()
+void SysYFDriver::scan_end()
 {
     instream.close();
 }

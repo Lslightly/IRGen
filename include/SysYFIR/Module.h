@@ -1,5 +1,5 @@
-#ifndef _SYSY_MODULE_H_
-#define _SYSY_MODULE_H_
+#ifndef _SYSYF_MODULE_H_
+#define _SYSYF_MODULE_H_
 
 #include <string>
 #include <list>
@@ -58,4 +58,4 @@ private:
     std::map<std::pair<Type *,int >, ArrayType *> array_map_; 
 };
 
-#endif // _SYSY_MODULE_H_
+#endif // _SYSYF_MODULE_H_

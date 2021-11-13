@@ -1,5 +1,5 @@
-#ifndef _SYSY_USER_H_
-#define _SYSY_USER_H_
+#ifndef _SYSYF_USER_H_
+#define _SYSYF_USER_H_
 
 #include "Value.h"
 #include <vector>
@@ -31,4 +31,4 @@ private:
     unsigned num_ops_;
 };
 
-#endif // _SYSY_USER_H_
+#endif // _SYSYF_USER_H_

@@ -1,6 +1,6 @@
-#line 2 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYScanner.cpp"
+#line 2 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFScanner.cpp"
 
-#line 4 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYScanner.cpp"
+#line 4 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFScanner.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -597,8 +597,8 @@ static yyconst flex_int16_t yy_rule_linenum[45] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
-#line 2 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 1 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
+#line 2 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 # include <cerrno>
 # include <climits>
 # include <cstdlib>
@@ -631,18 +631,18 @@ std::map<char,int> ch2int = {
     {'E',14},
     {'F',15}
 };
-# include "SysYDriver.h"
-# include "SysYParser.h"
+# include "SysYFDriver.h"
+# include "SysYFParser.h"
 # define RET_NOTYPE_TOKEN(name) \
-    auto mytoken = yy::SysYParser::make_##name(loc);\
+    auto mytoken = yy::SysYFParser::make_##name(loc);\
     loc.step();\
     return mytoken;
 
 # define RET_TYPE_TOKEN(name, value) \
-    auto mytoken = yy::SysYParser::make_##name(value, loc);\
+    auto mytoken = yy::SysYFParser::make_##name(value, loc);\
     loc.step();\
     return mytoken;
-#line 48 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 48 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 #if defined __clang__
 # define CLANG_VERSION (__clang_major__ * 100 + __clang_minor__)
 #endif
@@ -704,11 +704,11 @@ std::map<char,int> ch2int = {
 # endif
 #endif
 #define YY_NO_INPUT 1
-#line 113 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 113 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
   // Code run each time a pattern is matched.
   # define YY_USER_ACTION  loc.columns(yyleng);
 /* Regex abbreviations: */
-#line 712 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYScanner.cpp"
+#line 712 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFScanner.cpp"
 
 #define INITIAL 0
 
@@ -905,10 +905,10 @@ YY_DECL
 
 	{
 /* %% [7.0] user's declarations go here */
-#line 129 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 129 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 
  /* keyword */
-#line 912 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYScanner.cpp"
+#line 912 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFScanner.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -985,190 +985,190 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 131 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 131 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(FLOAT);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 132 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 132 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(INT);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 133 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 133 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(RETURN);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 134 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 134 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(VOID);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 135 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 135 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(CONST);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 136 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 136 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(BREAK);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 137 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 137 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(CONTINUE);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 138 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 138 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(WHILE);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 139 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 139 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(IF);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 140 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 140 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(ELSE);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 142 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 142 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LT);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 143 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 143 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LTE);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 144 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 144 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(GT);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 145 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 145 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(GTE);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 146 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 146 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(EQ);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 147 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 147 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(NEQ);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 148 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 148 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(NOT);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 149 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 149 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LOGICAND);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 150 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 150 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LOGICOR);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 151 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 151 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(PLUS);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 152 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 152 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(MINUS);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 153 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 153 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(MULTIPLY);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 154 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(DIVIDE);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 155 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 155 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(MODULO);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 156 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 156 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(ASSIGN);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 157 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 157 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(SEMICOLON);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 158 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 158 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(COMMA);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 159 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 159 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LPARENTHESE);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 160 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 160 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(RPARENTHESE);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 161 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 161 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LBRACKET);} 
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 162 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 162 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(RBRACKET);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 163 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 163 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LBRACE);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 164 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 164 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(RBRACE);}
 	YY_BREAK
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 167 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 167 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(LRBRACKET);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 168 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 168 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {loc.step();}
 	YY_BREAK
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 169 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 169 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {loc.lines(yyleng); loc.step();}
 	YY_BREAK
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 170 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 170 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {std::string s = yytext;
                           size_t n = std::count(s.begin(), s.end(), '\n');
                           for (size_t i = 0; i < n; i++) loc.lines(1);}
@@ -1176,12 +1176,12 @@ YY_RULE_SETUP
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 173 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 173 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {loc.lines(1);loc.step();}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 174 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 174 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {std::string dec = yytext;
                            unsigned sum = 0;
                            int len = dec.size();
@@ -1193,7 +1193,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 182 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 182 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {std::string hex = yytext;
                            unsigned sum = 0;
                            int len = hex.size();
@@ -1205,7 +1205,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 190 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 190 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {std::string oct = yytext;
                            unsigned sum = 0;
                            int len = oct.size();
@@ -1217,29 +1217,29 @@ YY_RULE_SETUP
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 198 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 198 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_TYPE_TOKEN(IDENTIFIER, yytext);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 199 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 199 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_TYPE_TOKEN(FLOATCONST, std::stod(yytext));}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 200 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 200 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {RET_NOTYPE_TOKEN(END);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 201 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 201 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 {std::cout << "Error in scanner!" << '\n'; exit(1);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 202 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 202 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 ECHO;
 	YY_BREAK
-#line 1243 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYScanner.cpp"
+#line 1243 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFScanner.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2350,7 +2350,7 @@ void yyfree (void * ptr )
 
 /* %ok-for-header */
 
-#line 202 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYScanner.ll"
+#line 202 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFScanner.ll"
 
 
 

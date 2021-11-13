@@ -1,5 +1,5 @@
-#ifndef _SYSY_SYNTAX_TREE_PRINTER_H_
-#define _SYSY_SYNTAX_TREE_PRINTER_H_
+#ifndef _SYSYF_SYNTAX_TREE_PRINTER_H_
+#define _SYSYF_SYNTAX_TREE_PRINTER_H_
 
 #include "SyntaxTree.h"
 
@@ -33,4 +33,4 @@ private:
     int indent = 0;
 };
 
-#endif  // _SYSY_SYNTAX_TREE_PRINTER_H_
+#endif  // _SYSYF_SYNTAX_TREE_PRINTER_H_

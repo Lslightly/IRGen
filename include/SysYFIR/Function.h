@@ -1,5 +1,5 @@
-#ifndef _SYSY_FUNCTION_H_
-#define _SYSY_FUNCTION_H_
+#ifndef _SYSYF_FUNCTION_H_
+#define _SYSYF_FUNCTION_H_
 
 #include <iterator>
 #include <list>
@@ -98,4 +98,4 @@ private:
     unsigned arg_no_;  // argument No.
 };
 
-#endif // _SYSY_FUNCTION_H_
+#endif // _SYSYF_FUNCTION_H_

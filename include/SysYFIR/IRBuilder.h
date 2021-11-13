@@ -1,5 +1,5 @@
-#ifndef _SYSY_IRBUILDER_H_
-#define _SYSY_IRBUILDER_H_
+#ifndef _SYSYF_IRBUILDER_H_
+#define _SYSYF_IRBUILDER_H_
 
 #include "BasicBlock.h"
 #include "Instruction.h"
@@ -72,4 +72,4 @@ public:
     SiToFpInst *create_sitofp(Value *val, Type *ty) { return SiToFpInst::create_sitofp(val, ty, this->BB_); }
 };
 
-#endif // _SYSY_IRBUILDER_H_
+#endif // _SYSYF_IRBUILDER_H_

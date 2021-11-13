@@ -1,5 +1,5 @@
-#ifndef _SYSY_CONSTANT_H_
-#define _SYSY_CONSTANT_H_
+#ifndef _SYSYF_CONSTANT_H_
+#define _SYSYF_CONSTANT_H_
 #include "User.h"
 #include "Value.h"
 #include "Type.h"
@@ -72,4 +72,4 @@ public:
     virtual std::string print() override;
 };
 
-#endif //_SYSY_CONSTANT_H_
+#endif //_SYSYF_CONSTANT_H_

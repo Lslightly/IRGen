@@ -14,24 +14,24 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/ASTBuilder)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/ASTPrinter)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/ErrorReporter)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/Grammar)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/SysYIR)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/SysYBuilder)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/SysYFIR)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/SysYFBuilder)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/ASTBuilder)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/ASTPrinter)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/ErrorReporter)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/Grammar)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYIR)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYBuilder)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYFIR)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYFBuilder)
 
 add_executable(
-  SysYCompiler
+  SysYFCompiler
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
 target_link_libraries(
-  SysYCompiler
-  SysYBuilder
+  SysYFCompiler
+  SysYFBuilder
   IRLib
   Driver
   ASTPrinter

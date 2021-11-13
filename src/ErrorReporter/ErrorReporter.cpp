@@ -1,6 +1,4 @@
-
 #include "ErrorReporter.h"
-
 
 ErrorReporter::ErrorReporter(std::ostream &error_stream) : err(error_stream) {}
 

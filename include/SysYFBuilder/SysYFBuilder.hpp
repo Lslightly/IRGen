@@ -1,5 +1,5 @@
-#ifndef _SYSY_IR_BUILDER_HPP_
-#define _SYSY_IR_BUILDER_HPP_
+#ifndef _SYSYF_IR_BUILDER_HPP_
+#define _SYSYF_IR_BUILDER_HPP_
 #include "BasicBlock.h"
 #include "Constant.h"
 #include "Function.h"
@@ -69,7 +69,7 @@ private:
     std::vector<std::map<std::string, Value *>> name2func;
 };
 
-class SysYBuilder: public SyntaxTree::Visitor
+class SysYFBuilder: public SyntaxTree::Visitor
 {
 private:
     virtual void visit(SyntaxTree::InitVal &) override final;
@@ -99,8 +99,8 @@ private:
     Scope scope;
     std::unique_ptr<Module> module;
 public:
-    SysYBuilder(){
-        module = std::unique_ptr<Module>(new Module("SysY code"));
+    SysYFBuilder(){
+        module = std::unique_ptr<Module>(new Module("SysYF code"));
         builder = new IRBuilder(nullptr, module.get());
         auto TyVoid = Type::get_void_type(module.get());
         auto TyInt32 = Type::get_int32_type(module.get());
@@ -214,4 +214,4 @@ public:
 };
 
 
-#endif // _SYSY_IR_BUILDER_HPP_
+#endif // _SYSYF_IR_BUILDER_HPP_

@@ -32,7 +32,7 @@
 
 
 /**
- ** \file /home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.h
+ ** \file /home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.h
  ** Define the yy::parser class.
  */
 
@@ -42,16 +42,16 @@
 // especially those whose name start with YY_ or yy_.  They are
 // private implementation details that can be changed or removed.
 
-#ifndef YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYPARSER_H_INCLUDED
-# define YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYPARSER_H_INCLUDED
+#ifndef YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYFPARSER_H_INCLUDED
+# define YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYFPARSER_H_INCLUDED
 // "%code requires" blocks.
-#line 12 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYParser.yy"
+#line 12 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/grammar/SysYFParser.yy"
 
 #include <string>
 #include "SyntaxTree.h"
-class SysYDriver;
+class SysYFDriver;
 
-#line 55 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.h"
+#line 55 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.h"
 
 # include <cassert>
 # include <cstdlib> // std::abort
@@ -185,13 +185,13 @@ class SysYDriver;
 #endif
 
 namespace yy {
-#line 189 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.h"
+#line 189 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.h"
 
 
 
 
   /// A Bison parser.
-  class SysYParser
+  class SysYFParser
   {
   public:
 #ifndef YYSTYPE
@@ -1225,7 +1225,7 @@ switch (yykind)
       /// The user-facing name of this symbol.
       std::string name () const YY_NOEXCEPT
       {
-        return SysYParser::symbol_name (this->kind ());
+        return SysYFParser::symbol_name (this->kind ());
       }
 
       /// Backward compatibility (Bison 3.6).
@@ -1351,14 +1351,14 @@ switch (yykind)
     };
 
     /// Build a parser object.
-    SysYParser (SysYDriver& driver_yyarg);
-    virtual ~SysYParser ();
+    SysYFParser (SysYFDriver& driver_yyarg);
+    virtual ~SysYFParser ();
 
 #if 201103L <= YY_CPLUSPLUS
     /// Non copyable.
-    SysYParser (const SysYParser&) = delete;
+    SysYFParser (const SysYFParser&) = delete;
     /// Non copyable.
-    SysYParser& operator= (const SysYParser&) = delete;
+    SysYFParser& operator= (const SysYFParser&) = delete;
 #endif
 
     /// Parse.  An alias for parse ().
@@ -2196,7 +2196,7 @@ switch (yykind)
     class context
     {
     public:
-      context (const SysYParser& yyparser, const symbol_type& yyla);
+      context (const SysYFParser& yyparser, const symbol_type& yyla);
       const symbol_type& lookahead () const YY_NOEXCEPT { return yyla_; }
       symbol_kind_type token () const YY_NOEXCEPT { return yyla_.kind (); }
       const location_type& location () const YY_NOEXCEPT { return yyla_.location; }
@@ -2207,16 +2207,16 @@ switch (yykind)
       int expected_tokens (symbol_kind_type yyarg[], int yyargn) const;
 
     private:
-      const SysYParser& yyparser_;
+      const SysYFParser& yyparser_;
       const symbol_type& yyla_;
     };
 
   private:
 #if YY_CPLUSPLUS < 201103L
     /// Non copyable.
-    SysYParser (const SysYParser&);
+    SysYFParser (const SysYFParser&);
     /// Non copyable.
-    SysYParser& operator= (const SysYParser&);
+    SysYFParser& operator= (const SysYFParser&);
 #endif
 
 
@@ -2528,13 +2528,13 @@ switch (yykind)
 
 
     // User arguments.
-    SysYDriver& driver;
+    SysYFDriver& driver;
 
   };
 
   inline
-  SysYParser::symbol_kind_type
-  SysYParser::yytranslate_ (int t)
+  SysYFParser::symbol_kind_type
+  SysYFParser::yytranslate_ (int t)
   {
     // YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to
     // TOKEN-NUM as returned by yylex.
@@ -2587,7 +2587,7 @@ switch (yykind)
 
   // basic_symbol.
   template <typename Base>
-  SysYParser::basic_symbol<Base>::basic_symbol (const basic_symbol& that)
+  SysYFParser::basic_symbol<Base>::basic_symbol (const basic_symbol& that)
     : Base (that)
     , value ()
     , location (that.location)
@@ -2697,22 +2697,22 @@ switch (yykind)
 
 
   template <typename Base>
-  SysYParser::symbol_kind_type
-  SysYParser::basic_symbol<Base>::type_get () const YY_NOEXCEPT
+  SysYFParser::symbol_kind_type
+  SysYFParser::basic_symbol<Base>::type_get () const YY_NOEXCEPT
   {
     return this->kind ();
   }
 
   template <typename Base>
   bool
-  SysYParser::basic_symbol<Base>::empty () const YY_NOEXCEPT
+  SysYFParser::basic_symbol<Base>::empty () const YY_NOEXCEPT
   {
     return this->kind () == symbol_kind::S_YYEMPTY;
   }
 
   template <typename Base>
   void
-  SysYParser::basic_symbol<Base>::move (basic_symbol& s)
+  SysYFParser::basic_symbol<Base>::move (basic_symbol& s)
   {
     super_type::move (s);
     switch (this->kind ())
@@ -2820,13 +2820,13 @@ switch (yykind)
 
   // by_kind.
   inline
-  SysYParser::by_kind::by_kind ()
+  SysYFParser::by_kind::by_kind ()
     : kind_ (symbol_kind::S_YYEMPTY)
   {}
 
 #if 201103L <= YY_CPLUSPLUS
   inline
-  SysYParser::by_kind::by_kind (by_kind&& that)
+  SysYFParser::by_kind::by_kind (by_kind&& that)
     : kind_ (that.kind_)
   {
     that.clear ();
@@ -2834,48 +2834,48 @@ switch (yykind)
 #endif
 
   inline
-  SysYParser::by_kind::by_kind (const by_kind& that)
+  SysYFParser::by_kind::by_kind (const by_kind& that)
     : kind_ (that.kind_)
   {}
 
   inline
-  SysYParser::by_kind::by_kind (token_kind_type t)
+  SysYFParser::by_kind::by_kind (token_kind_type t)
     : kind_ (yytranslate_ (t))
   {}
 
   inline
   void
-  SysYParser::by_kind::clear () YY_NOEXCEPT
+  SysYFParser::by_kind::clear () YY_NOEXCEPT
   {
     kind_ = symbol_kind::S_YYEMPTY;
   }
 
   inline
   void
-  SysYParser::by_kind::move (by_kind& that)
+  SysYFParser::by_kind::move (by_kind& that)
   {
     kind_ = that.kind_;
     that.clear ();
   }
 
   inline
-  SysYParser::symbol_kind_type
-  SysYParser::by_kind::kind () const YY_NOEXCEPT
+  SysYFParser::symbol_kind_type
+  SysYFParser::by_kind::kind () const YY_NOEXCEPT
   {
     return kind_;
   }
 
   inline
-  SysYParser::symbol_kind_type
-  SysYParser::by_kind::type_get () const YY_NOEXCEPT
+  SysYFParser::symbol_kind_type
+  SysYFParser::by_kind::type_get () const YY_NOEXCEPT
   {
     return this->kind ();
   }
 
 } // yy
-#line 2877 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYParser.h"
+#line 2877 "/home/hzq/SysYF_IR_Lab/2021_sysycompiler_ir_lab/build/SysYFParser.h"
 
 
 
 
-#endif // !YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYPARSER_H_INCLUDED
+#endif // !YY_YY_HOME_HZQ_SYSYF_IR_LAB_2021_SYSYCOMPILER_IR_LAB_BUILD_SYSYFPARSER_H_INCLUDED
