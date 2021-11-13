@@ -8,14 +8,14 @@
 ## 0. 前言
 
 本次实验分为3关，为组队实验。**本次实验请务必使用git提交**。    
-本次实验的目的是让大家熟悉生成中间代码所需要的相关知识: LLVM IR、 SysY IR（LLVM IR的轻量级C++接口），并实际实现一个IR Builder。
+本次实验的目的是让大家熟悉生成中间代码所需要的相关知识: LLVM IR、 SysYF IR（LLVM IR的轻量级C++接口），并实际实现一个IR Builder。
 在开始实验之前，请确保LLVM的版本不低于10.0.1，且PATH环境变量配置正确。可以通过`lli --version`命令是否可以输出10.0.1的版本信息来验证。
 
 ### 主要工作
 
 1. 第一部分: 了解LLVM IR。通过clang生成的.ll，了解LLVM IR与c代码的对应关系。相应文档见[phase1.md](./doc/phase1.md)
-2. 第二部分: 了解SysY IR。通过助教提供的c++例子，了解SysY IR的c++接口及实现。相应文档见[phase2.md](./doc/phase2.md)
-3. 第三部分: 使用SysY IR，实现一个IR Builder，使其可以通过抽象语法树生成LLVM兼容的IR代码。相应文档见[phase3.md](./doc/phase3.md)
+2. 第二部分: 了解SysYF IR。通过助教提供的c++例子，了解SysYF IR的c++接口及实现。相应文档见[phase2.md](./doc/phase2.md)
+3. 第三部分: 使用SysYF IR，实现一个IR Builder，使其可以通过抽象语法树生成LLVM兼容的IR代码。相应文档见[phase3.md](./doc/phase3.md)
 4. 实验报告：在[report.md](./report/report.md)中撰写报告。
 
 ## 1. 实验要求
@@ -32,19 +32,19 @@
 │   ├── phase2.md
 │   ├── phase3.md
 │   ├── SysYF语言定义.pdf
-|   └── SysYIR.md                       <- SysY IR 相关文档
+|   └── SysYFIR.md                       <- SysYF IR 相关文档
 ├── report
 │   ├── report.md                       <- PW6所需提交的实验报告
 │   └── contribution.md                 <- PW6所需提交的组员贡献（队长负责填写）
 ├── include                             <- 实验所需的头文件
 │   ├── ...
-│   └── SysYIR
+│   └── SysYFIR
 ├── src
 │   ├── ...
-│   ├── SysYIR
-│   └── SysYBuilder
+│   ├── SysYFIR
+│   └── SysYFBuilder
 |       ├── CMakeLists.txt
-|       └── SysYBuilder.cpp             <- 第三部分你需要修改的文件
+|       └── SysYFBuilder.cpp             <- 第三部分你需要修改的文件
 └── SysYF_Student
     ├── CMakeLists.txt
     ├── SysYF_Task1
@@ -88,7 +88,7 @@
   * 实验部分:
     * 需要完成 `./SysYF_Student/SysYF_Task1/student_ll`目录下的4个文件
     * 需要完成 `./SysYF_Student/SysYF_Task2/student_cpp`目录下的4个文件
-    * 需要完成 `./src/SysYBuilder/SysYBuilder.cpp`
+    * 需要完成 `./src/SysYFBuilder/SysYFBuilder.cpp`
     * 需要在 `./report/report.md` 中撰写实验报告
       * 实验报告内容包括:
         * 实验要求、问题回答、实验设计、实验难点及解决方案、实验总结、实验反馈、组间交流(具体参考[report.md](./report.md))

@@ -3,12 +3,12 @@
 ---
 
 ### 任务描述
-本关任务：熟悉SysY IR接口，并根据给出的4个C程序手写C++代码调用SysY IR接口生成与sy文件功能相同的ll文件。
+本关任务：熟悉SysYF IR接口，并根据给出的4个C程序手写C++代码调用SysYF IR接口生成与sy文件功能相同的ll文件。
 
 ### 相关知识
-#### SysY IR - LLVM IR的C++接口
-由于LLVM IR官方的C++接口的文档同样过于冗长，助教提供了SysY IR这一C++接口库。你需要阅读**SysY IR核心类的介绍**`doc/SysYIR.md`。  
-本关会要求大家通过SysY IR根据AST构建生成LLVM IR。所以你需要仔细阅读文档了解其接口的设计。
+#### SysYF IR - LLVM IR的C++接口
+由于LLVM IR官方的C++接口的文档同样过于冗长，助教提供了SysYF IR这一C++接口库。你需要阅读**SysYF IR核心类的介绍**`doc/SysYFIR.md`。  
+本关会要求大家通过SysYF IR根据AST构建生成LLVM IR。所以你需要仔细阅读文档了解其接口的设计。
 
 #### 样例学习
 <details>
@@ -97,11 +97,11 @@
     //后略, 详细见代码文件
 ```
 </details>
-为了让大家更直观地感受并学会SysY IR接口的使用，助教提供了`SysYF_Student/SysYF_Task2/ta_demo/go_upstairs_gen.cpp`。  
+为了让大家更直观地感受并学会SysYF IR接口的使用，助教提供了`SysYF_Student/SysYF_Task2/ta_demo/go_upstairs_gen.cpp`。  
 该C++程序会生成与go_upstairs.c逻辑相同的LLVM IR文件。助教提供了详尽的注释，一定要好好利用！  
 
 ### 本关具体任务
-1. 你需要在`SysYF_Student/SysYF_Task2/student_cpp/`文件夹中，调用SysY IR接口，编写自己的`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`程序，以生成与phase1的四个sy程序相同逻辑功能的ll文件。
+1. 你需要在`SysYF_Student/SysYF_Task2/student_cpp/`文件夹中，调用SysYF IR接口，编写自己的`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`程序，以生成与phase1的四个sy程序相同逻辑功能的ll文件。
 2. 在`report.md`内回答[思考题](#思考题)
 
 ### 编译、运行和验证
@@ -122,6 +122,6 @@ make
 ### 思考题
 请在`report/report.md`中详细回答下述思考题。
 
-1. 请给出`SysYIR.md`中提到的两种getelementptr用法的区别, 并解释原因:
+1. 请给出`SysYFIR.md`中提到的两种getelementptr用法的区别, 并解释原因:
   - `%2 = getelementptr [10 x i32], [10 x i32]* %1, i32 0, i32 %0` 
   - `%2 = getelementptr i32, i32* %1, i32 %0`

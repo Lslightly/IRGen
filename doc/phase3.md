@@ -3,13 +3,13 @@
 ---
 
 ### 任务描述
-本关任务：编写`SysYBuilder.cpp`文件，以实现 IR 的自动生成
+本关任务：编写`SysYFBuilder.cpp`文件，以实现 IR 的自动生成
 
 ### 相关知识
 #### 实验框架
-本次实验使用了由 C++ 编写的 SysY IR 来生成 LLVM IR。为了便于大家进行实验，该框架自动完成了语法树到 C++ 上的抽象语法树的转换。
+本次实验使用了由 C++ 编写的 SysYF IR 来生成 LLVM IR。为了便于大家进行实验，该框架自动完成了语法树到 C++ 上的抽象语法树的转换。
 
-在`SysYBuilder.hpp`中，我们还定义了一个用于存储作用域的类`Scope`。它的作用是辅助我们在遍历语法树时，管理不同作用域中的变量。它提供了以下接口：
+在`SysYFBuilder.hpp`中，我们还定义了一个用于存储作用域的类`Scope`。它的作用是辅助我们在遍历语法树时，管理不同作用域中的变量。它提供了以下接口：
 ```cpp
 // 进入一个新的作用域
 void enter();
@@ -23,15 +23,15 @@ Value* find(std::string name, bool isfunc);
 // 判断当前是否在全局作用域内
 bool in_global();
 ```
-你们需要根据语义合理调用`enter`与`exit`，并且在变量声明和使用时正确调用`push`与`find`。在类`SysYfBuilder`中，有一个`Scope`类型的成员变量`scope`，它在初始化时已经将特殊函数加入了作用域中。因此，你们在进行名字查找时不需要顾虑是否需要对特殊函数进行特殊操作。
+你们需要根据语义合理调用`enter`与`exit`，并且在变量声明和使用时正确调用`push`与`find`。在类`SysYFBuilder`中，有一个`Scope`类型的成员变量`scope`，它在初始化时已经将特殊函数加入了作用域中。因此，你们在进行名字查找时不需要顾虑是否需要对特殊函数进行特殊操作。
 
 ### 本关具体任务
-1. 你需要在`src/SysYBuilder`文件夹中，调用SysY IR接口，填写`SysYBuilder.cpp`文件，以实现 IR 的自动生成。
+1. 你需要在`src/SysYFBuilder`文件夹中，调用SysYF IR接口，填写`SysYFBuilder.cpp`文件，以实现 IR 的自动生成。
 2. 在`report.md`内回答[思考题](#思考题)
 
 ### 编译、运行与验证
 
-#### 编译运行 SysYCompiler
+#### 编译运行 SysYFCompiler
 
 ```sh
 mkdir build
@@ -40,11 +40,11 @@ cmake ..
 make
 ```
 
-编译后会产生 `SysYCompiler` 程序，它能将sy文件输出为LLVM IR。  
+编译后会产生 `SysYFCompiler` 程序，它能将sy文件输出为LLVM IR。  
 当需要对 sy 文件测试时，可以这样使用：
 
 ```sh
-SysYCompiler test.sy -emit-ir -o test.ll
+SysYFCompiler test.sy -emit-ir -o test.ll
 ```
 得到对应的ll文件。
 
@@ -70,7 +70,7 @@ SysYCompiler test.sy -emit-ir -o test.ll
 
 #### 多维数组
 
-目前给出的SysY IR接口并不支持多维数组的实现，因此你需要修改接口，以实现多维数组的声明、初始化和使用，你可以修改的内容为文件夹`include/SysYIR`，`include/SysYBuilder`，`src/SysYIR`，`src/SysYBuilder`内的所有内容
+目前给出的SysYF IR接口并不支持多维数组的实现，因此你需要修改接口，以实现多维数组的声明、初始化和使用，你可以修改的内容为文件夹`include/SysYFIR`，`include/SysYFBuilder`，`src/SysYFIR`，`src/SysYFBuilder`内的所有内容
 
 多维数组在目前的接口基础上，一般有两种做法：  
 - 直接实现，参考 clang 生成的 LLVM IR，修改当前接口使其支持多维的数组类型
