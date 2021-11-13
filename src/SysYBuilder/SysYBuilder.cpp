@@ -53,6 +53,10 @@ void SysYBuilder::visit(SyntaxTree::AssignStmt &node) {
     return;
 }
 
+void SysYBuilder::visit(SyntaxTree::LVal &node) {
+    return;
+}
+
 void SysYBuilder::visit(SyntaxTree::Literal &node) {
     return;
 }
