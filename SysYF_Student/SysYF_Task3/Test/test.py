@@ -85,9 +85,6 @@ if __name__ == "__main__":
         EXE_PATH = os.path.abspath('../../../build/SysYCompiler')
         testcase_list = list(map(lambda x: x.split('.'), os.listdir(TEST_BASE_PATH)))
         testcase_list.sort()
-        for i in range(len(testcase_list)-1, -1, -1):
-            if len(testcase_list[i]) == 1:
-                testcase_list.remove(testcase_list[i])
         for i in range(len(testcase_list)):
             testcases[testcase_list[i][0]] = False
         for i in range(len(testcase_list)):
