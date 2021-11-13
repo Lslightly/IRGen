@@ -82,7 +82,7 @@ if __name__ == "__main__":
     optimization = "-O0"     # -O0 -O1 -O2 -O3 -O4(currently = -O3) -Ofast
     for TEST_BASE_PATH in TEST_DIRS:
         testcases = {}  # { name: need_input }
-        EXE_PATH = os.path.abspath('../../../build/SysYCompiler')
+        EXE_PATH = os.path.abspath('../../../build/SysYFCompiler')
         testcase_list = list(map(lambda x: x.split('.'), os.listdir(TEST_BASE_PATH)))
         testcase_list.sort()
         for i in range(len(testcase_list)):
