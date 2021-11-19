@@ -1,9 +1,9 @@
-#ifndef _SYSYF_IR_BUILDER_HPP_
-#define _SYSYF_IR_BUILDER_HPP_
+#ifndef _SYSYF_IR_BUILDER_H_
+#define _SYSYF_IR_BUILDER_H_
 #include "BasicBlock.h"
 #include "Constant.h"
 #include "Function.h"
-#include "IRBuilder.h"
+#include "IRStmtBuilder.h"
 #include "Module.h"
 #include "Type.h"
 #include <map>
@@ -214,4 +214,4 @@ public:
 };
 
 
-#endif // _SYSYF_IR_BUILDER_HPP_
+#endif // _SYSYF_IR_BUILDER_H_

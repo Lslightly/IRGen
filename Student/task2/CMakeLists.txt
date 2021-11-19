@@ -1,4 +1,4 @@
-project(SysYF_Task2)
+project(task2)
 
 cmake_minimum_required(VERSION 3.5)
 
@@ -13,5 +13,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${SYSYF_SOURCE_DIR}include/SysYFIR)
 add_subdirectory(${SYSYF_SOURCE_DIR}src/SysYFIR src/SysYFIR)
 
-add_subdirectory(ta_demo)
-add_subdirectory(student_cpp)
+add_subdirectory(demo)
+add_subdirectory(cpp)

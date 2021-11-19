@@ -3,7 +3,7 @@
 #include "Function.h"
 #include "BasicBlock.h"
 #include "Instruction.h"
-#include "IRprinter.h"
+#include "IRPrinter.h"
 #ifdef DEBUG
 #include <cassert>
 #endif

@@ -1,6 +1,6 @@
 #include "Module.h"
 #include "Function.h"
-#include "IRprinter.h"
+#include "IRPrinter.h"
 
 Function::Function(FunctionType *ty, const std::string &name, Module *parent)
     : Value(ty, name), parent_(parent), seq_cnt_(0)

@@ -1,5 +1,5 @@
 #include "GlobalVariable.h"
-#include "IRprinter.h"
+#include "IRPrinter.h"
 
 GlobalVariable::GlobalVariable( std::string name, Module *m, Type* ty, bool is_const, Constant* init)
     : User(ty, name, init != nullptr), is_const_(is_const), init_val_(init) 

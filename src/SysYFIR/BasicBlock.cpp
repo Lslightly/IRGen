@@ -1,7 +1,7 @@
 #include "Module.h"
 #include "BasicBlock.h"
 #include "Function.h"
-#include "IRprinter.h"
+#include "IRPrinter.h"
 #ifdef DEBUG
 #include <cassert>
 #endif

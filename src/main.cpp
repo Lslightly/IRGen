@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SysYFBuilder.hpp"
+#include "IRBuilder.h"
 #include "SysYFDriver.h"
 #include "SyntaxTreePrinter.h"
 #include "ErrorReporter.h"

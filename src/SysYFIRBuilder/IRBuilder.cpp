@@ -1,4 +1,4 @@
-#include "SysYFBuilder.hpp"
+#include "IRBuilder.h"
 
 #define CONST_INT(num) ConstantInt::get(num, module.get())
 #define CONST_FLOAT(num) ConstantFloat::get(num, module.get())

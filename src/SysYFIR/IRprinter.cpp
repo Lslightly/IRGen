@@ -1,4 +1,4 @@
-#include "IRprinter.h"
+#include "IRPrinter.h"
 
 std::string print_as_op( Value *v, bool print_ty )
 {

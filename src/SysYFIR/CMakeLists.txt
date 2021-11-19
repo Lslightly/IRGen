@@ -9,5 +9,5 @@ add_library(
         GlobalVariable.cpp
         Instruction.cpp
         Module.cpp
-        IRprinter.cpp
+        IRPrinter.cpp
 )
