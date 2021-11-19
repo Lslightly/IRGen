@@ -5,13 +5,13 @@
 #include "Instruction.h"
 #include "Value.h"
 
-class IRBuilder {
+class IRStmtBuilder {
 private:
     BasicBlock *BB_; 
     Module *m_;
 public:
-    IRBuilder(BasicBlock *bb, Module *m) : BB_(bb), m_(m) {};
-    ~IRBuilder() = default;
+    IRStmtBuilder(BasicBlock *bb, Module *m) : BB_(bb), m_(m) {};
+    ~IRStmtBuilder() = default;
     Module *get_module(){return m_;}
     BasicBlock *get_insert_block() { return this->BB_; }
     void set_insert_point(BasicBlock *bb) { this->BB_ = bb; } //在某个基本块中插入指令

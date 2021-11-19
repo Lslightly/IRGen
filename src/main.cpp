@@ -14,7 +14,7 @@ void print_help(const std::string& exe_name) {
 
 int main(int argc, char *argv[])
 {
-    SysYFBuilder builder;
+    IRBuilder builder;
     SysYFDriver driver;
     SyntaxTreePrinter printer;
     ErrorReporter reporter(std::cerr);

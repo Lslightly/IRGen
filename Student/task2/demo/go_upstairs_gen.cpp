@@ -1,7 +1,7 @@
 #include "BasicBlock.h"
 #include "Constant.h"
 #include "Function.h"
-#include "IRBuilder.h"
+#include "IRStmtBuilder.h"
 #include "Module.h"
 #include "Type.h"
 
@@ -22,7 +22,7 @@
 
 int main() {
   auto module = new Module("SysY code");  // module name是什么无关紧要
-  auto builder = new IRBuilder(nullptr, module);
+  auto builder = new IRStmtBuilder(nullptr, module);
   Type *Int32Type = Type::get_int32_type(module);
 
   // 全局数组,num,x

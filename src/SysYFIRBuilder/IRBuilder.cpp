@@ -17,7 +17,7 @@ Type *FLOAT_T;
 Type *INT32PTR_T;
 Type *FLOATPTR_T;
 
-void SysYFBuilder::visit(SyntaxTree::Assembly &node) {
+void IRBuilder::visit(SyntaxTree::Assembly &node) {
     VOID_T = Type::get_void_type(module.get());
     INT1_T = Type::get_int1_type(module.get());
     INT32_T = Type::get_int32_type(module.get());
@@ -31,44 +31,44 @@ void SysYFBuilder::visit(SyntaxTree::Assembly &node) {
 
 // You need to fill them
 
-void SysYFBuilder::visit(SyntaxTree::InitVal &node) {}
+void IRBuilder::visit(SyntaxTree::InitVal &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::FuncDef &node) {}
+void IRBuilder::visit(SyntaxTree::FuncDef &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::FuncFParamList &node) {}
+void IRBuilder::visit(SyntaxTree::FuncFParamList &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::FuncParam &node) {}
+void IRBuilder::visit(SyntaxTree::FuncParam &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::VarDef &node) {}
+void IRBuilder::visit(SyntaxTree::VarDef &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::LVal &node) {}
+void IRBuilder::visit(SyntaxTree::LVal &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::AssignStmt &node) {}
+void IRBuilder::visit(SyntaxTree::AssignStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::Literal &node) {}
+void IRBuilder::visit(SyntaxTree::Literal &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::ReturnStmt &node) {}
+void IRBuilder::visit(SyntaxTree::ReturnStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::BlockStmt &node) {}
+void IRBuilder::visit(SyntaxTree::BlockStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::EmptyStmt &node) {}
+void IRBuilder::visit(SyntaxTree::EmptyStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::ExprStmt &node) {}
+void IRBuilder::visit(SyntaxTree::ExprStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::UnaryCondExpr &node) {}
+void IRBuilder::visit(SyntaxTree::UnaryCondExpr &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::BinaryCondExpr &node) {}
+void IRBuilder::visit(SyntaxTree::BinaryCondExpr &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::BinaryExpr &node) {}
+void IRBuilder::visit(SyntaxTree::BinaryExpr &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::UnaryExpr &node) {}
+void IRBuilder::visit(SyntaxTree::UnaryExpr &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::FuncCallStmt &node) {}
+void IRBuilder::visit(SyntaxTree::FuncCallStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::IfStmt &node) {}
+void IRBuilder::visit(SyntaxTree::IfStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::WhileStmt &node) {}
+void IRBuilder::visit(SyntaxTree::WhileStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::BreakStmt &node) {}
+void IRBuilder::visit(SyntaxTree::BreakStmt &node) {}
 
-void SysYFBuilder::visit(SyntaxTree::ContinueStmt &node) {}
+void IRBuilder::visit(SyntaxTree::ContinueStmt &node) {}

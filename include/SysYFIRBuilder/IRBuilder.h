@@ -69,7 +69,7 @@ private:
     std::vector<std::map<std::string, Value *>> name2func;
 };
 
-class SysYFBuilder: public SyntaxTree::Visitor
+class IRBuilder: public SyntaxTree::Visitor
 {
 private:
     virtual void visit(SyntaxTree::InitVal &) override final;
@@ -95,13 +95,13 @@ private:
     virtual void visit(SyntaxTree::BreakStmt &) override final;
     virtual void visit(SyntaxTree::ContinueStmt &) override final;
 
-    IRBuilder *builder;
+    IRStmtBuilder *builder;
     Scope scope;
     std::unique_ptr<Module> module;
 public:
-    SysYFBuilder(){
+    IRBuilder(){
         module = std::unique_ptr<Module>(new Module("SysYF code"));
-        builder = new IRBuilder(nullptr, module.get());
+        builder = new IRStmtBuilder(nullptr, module.get());
         auto TyVoid = Type::get_void_type(module.get());
         auto TyInt32 = Type::get_int32_type(module.get());
         auto TyInt32Ptr = Type::get_int32_ptr_type(module.get());
