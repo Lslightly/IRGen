@@ -32,7 +32,7 @@
 │   ├── phase2.md
 │   ├── phase3.md
 │   ├── SysYF语言定义.pdf
-|   └── SysYFIR.md                       <- SysYF IR 相关文档
+|   └── SysYFIR.md                      <- SysYF IR 相关文档
 ├── report
 │   ├── report.md                       <- PW6所需提交的实验报告
 │   └── contribution.md                 <- PW6所需提交的组员贡献（队长负责填写）
@@ -42,53 +42,53 @@
 ├── src
 │   ├── ...
 │   ├── SysYFIR
-│   └── SysYFBuilder
+│   └── SysYFIRBuilder
 |       ├── CMakeLists.txt
-|       └── SysYFBuilder.cpp             <- 第三部分你需要修改的文件
-└── SysYF_Student
+|       └── IRBuilder.cpp               <- 第三部分你需要修改的文件
+└── Student
     ├── CMakeLists.txt
-    ├── SysYF_Task1
-    |   ├── student_ll                  <- PW6所需提交的.ll目录（第一部分）
+    ├── task1
+    |   ├── ll                          <- PW6所需提交的.ll目录（第一部分）
     |   |   ├── assign_hand.ll
     |   │   ├── fun_hand.ll
     |   │   ├── if_hand.ll
     |   │   └── while_hand.ll
-    |   ├── student_sy
-    |   |   ├── assign.sy
-    |   │   ├── fun.sy
-    |   │   ├── if.sy
-    |   │   └── while.sy
-    |   └── ta_demo
+    |   ├── sy
+    |   |   ├── assign_test.sy
+    |   │   ├── fun_test.sy
+    |   │   ├── if_test.sy
+    |   │   └── while_test.sy
+    |   └── demo
     |       └── go_upstairs.c
-    ├── SysYF_Task2
-    |   ├── student_cpp                 <- PW6所需提交的.cpp目录（第二部分）
+    ├── task2
+    |   ├── cpp                         <- PW6所需提交的.cpp目录（第二部分）
     |   |   ├── CMakeLists.txt
     |   |   ├── assign_gen.cpp
     |   │   ├── fun_gen.cpp
     |   │   ├── if_gen.cpp
     |   │   └── while_gen.cpp
-    |   ├── student_sy
-    |   |   ├── assign.sy
-    |   │   ├── fun.sy
-    |   │   ├── if.sy
-    |   │   └── while.sy
-    |   └── ta_demo
+    |   ├── sy
+    |   |   ├── assign_test.sy
+    |   │   ├── fun_test.sy
+    |   │   ├── if_test.sy
+    |   │   └── while_test.sy
+    |   └── demo
     |       |── CMakeLists.txt
     |       |── go_upstairs.sy
     |       └── go_upstairs_gen.cpp     <- 助教提供的打印go_upstairs.ll的cpp
-    └── SysYF_Task3
-        └── Test_H
-            ├── test_H.py               <- PW6第三部分评测脚本
-            └── Easy_H                  <- 测试样例文件夹
+    └── task3
+        └── test
+            ├── test.py                 <- PW6第三部分评测脚本
+            └── test                    <- 测试样例文件夹
 ```
 
 ### 1.2 提交要求和评分标准
 * 提交要求  
   本实验的提交要求分为两部分: 实验部分的文件和报告。
   * 实验部分:
-    * 需要完成 `./SysYF_Student/SysYF_Task1/student_ll`目录下的4个文件
-    * 需要完成 `./SysYF_Student/SysYF_Task2/student_cpp`目录下的4个文件
-    * 需要完成 `./src/SysYFBuilder/SysYFBuilder.cpp`
+    * 需要完成 `./Student/task1/ll`目录下的4个文件
+    * 需要完成 `./Student/task2/cpp`目录下的4个文件
+    * 需要完成 `./src/SysYFIRBuilder/IRBuilder.cpp`
     * 需要在 `./report/report.md` 中撰写实验报告
       * 实验报告内容包括:
         * 实验要求、问题回答、实验设计、实验难点及解决方案、实验总结、实验反馈、组间交流(具体参考[report.md](./report.md))

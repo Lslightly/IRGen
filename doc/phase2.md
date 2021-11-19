@@ -3,12 +3,12 @@
 ---
 
 ### 任务描述
-本关任务：熟悉SysYF IR接口，并根据给出的4个C程序手写C++代码调用SysYF IR接口生成与sy文件功能相同的ll文件。
+**本关任务**：熟悉SysYF IR的应用编程接口，并根据给出的4个SysYF程序手写调用SysYF IR应用编程接口的C++代码，生成与sy文件功能相同的ll文件。
 
 ### 相关知识
-#### SysYF IR - LLVM IR的C++接口
-由于LLVM IR官方的C++接口的文档同样过于冗长，助教提供了SysYF IR这一C++接口库。你需要阅读**SysYF IR核心类的介绍**`doc/SysYFIR.md`。  
-本关会要求大家通过SysYF IR根据AST构建生成LLVM IR。所以你需要仔细阅读文档了解其接口的设计。
+#### SysYF IR 应用编程接口
+由于LLVM IR官方的C++应用编程接口的文档内容繁多，本实训项目提供SysYF IR应用编程接口库，该库用C++编写，可以用于生成LLVM IR的子集。你需要阅读**SysYF IR核心类的介绍**`doc/SysYFIR.md`。  
+本关要求你根据AST，使用SysYF IR应用编程接口来构建生成LLVM IR。你需要先仔细阅读文档`doc/SysYFIR.md`以了解其接口的设计。
 
 #### 样例学习
 <details>
@@ -98,15 +98,15 @@
 ```
 </details>
 
-为了让大家更直观地感受并学会SysYF IR接口的使用，助教提供了`SysYF_Student/SysYF_Task2/ta_demo/go_upstairs_gen.cpp`。  
-该C++程序会生成与go_upstairs.c逻辑相同的LLVM IR文件。助教提供了详尽的注释，一定要好好利用！  
+为了更直观地感受并学会使用 SysYF IR应用编程接口，本实训项目提供了示例代码，位于`Student/task2/demo/go_upstairs_gen.cpp`。  
+该C++程序会生成与go_upstairs.c逻辑相同的LLVM IR文件，在该C++程序中提供了详尽的注释，请阅读理解，以便更好地开展你的实验！  
 
 ### 本关具体任务
-1. 你需要在`SysYF_Student/SysYF_Task2/student_cpp/`文件夹中，调用SysYF IR接口，编写自己的`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`程序，以生成与phase1的四个sy程序相同逻辑功能的ll文件。
+1. 你需要在`Student/task2/cpp/`文件夹中，调用SysYF IR应用编程接口，编写自己的`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`程序，以生成与第1关的四个sy 程序相同逻辑功能的ll文件。
 2. 在`report.md`内回答[思考题](#思考题)
 
 ### 编译、运行和验证
-在 `SysYF_Student/SysYF_Task2/build/` 下执行:
+在 `Student/task2/build/` 下执行:
 ``` shell
 # 如果存在 CMakeCache.txt 要先删除
 # rm CMakeCache.txt
@@ -114,15 +114,15 @@ cmake ..
 make
 ```
 你可以得到对应`assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`，`go_upstairs_gen.cpp`的可执行文件`assign_generator`，`func_generator`，`if_generator`，`while_generator`，`go_upstairs_generator`。  
-之后直接执行可执行文件即可得到对应ll文件：  
+之后直接执行可执行文件，即可得到对应ll文件：  
 ``` shell
 # 在build文件夹内
 ./go_upstairs_generator
 ```
 
 ### 思考题
-请在`report/report.md`中详细回答下述思考题。
+请在`report/report.md`中详细回答下述思考题：
 
-1. 请给出`SysYFIR.md`中提到的两种getelementptr用法的区别, 并解释原因:
+2-1. 请给出`SysYFIR.md`中提到的两种getelementptr用法的区别, 并解释原因:
   - `%2 = getelementptr [10 x i32], [10 x i32]* %1, i32 0, i32 %0` 
   - `%2 = getelementptr i32, i32* %1, i32 %0`
