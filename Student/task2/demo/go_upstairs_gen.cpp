@@ -1,7 +1,7 @@
 #include "BasicBlock.h"
 #include "Constant.h"
 #include "Function.h"
-#include "IRBuilder.h"
+#include "IRStmtBuilder.h"
 #include "Module.h"
 #include "Type.h"
 
