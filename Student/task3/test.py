@@ -3,7 +3,7 @@ import subprocess
 import os
 
 IRBuild_ptn = '"{}" "-emit-ir" "-o" "{}" "{}"'
-ExeGen_ptn = '"clang" "{}" "-o" "{}" "{}" "../../../lib/lib.c"'
+ExeGen_ptn = '"clang" "{}" "-o" "{}" "{}" "../../lib/lib.c"'
 Exe_ptn = '"{}"'
 
 def eval(EXE_PATH, TEST_BASE_PATH, optimization):
@@ -75,14 +75,14 @@ if __name__ == "__main__":
 
     # you can only modify this to add your testcase
     TEST_DIRS = [
-                './Easy/',
+                './test/',
                 ]
     # you can only modify this to add your testcase
 
     optimization = "-O0"     # -O0 -O1 -O2 -O3 -O4(currently = -O3) -Ofast
     for TEST_BASE_PATH in TEST_DIRS:
         testcases = {}  # { name: need_input }
-        EXE_PATH = os.path.abspath('../../../build/SysYFCompiler')
+        EXE_PATH = os.path.abspath('../../build/SysYFCompiler')
         testcase_list = list(map(lambda x: x.split('.'), os.listdir(TEST_BASE_PATH)))
         testcase_list.sort()
         for i in range(len(testcase_list)):
