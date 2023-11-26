@@ -15,24 +15,26 @@
 #endif
 
 #define CONST_INT(num) \
-    ConstantInt::get(num, module)
+    ConstantInt::create(num, module)
 
 #define CONST_FP(num) \
-    ConstantFloat::get(num, module) // 得到常数值的表示,方便后面多次用到
+    ConstantFloat::create(num, module) // 得到常数值的表示,方便后面多次用到
+
+using namespace SysYF::IR;
 
 int main() {
-  auto module = new Module("SysY code");  // module name是什么无关紧要
-  auto builder = new IRStmtBuilder(nullptr, module);
-  Type *Int32Type = Type::get_int32_type(module);
+  auto module = Module::create("SysYF code");  // module name是什么无关紧要
+  auto builder = IRStmtBuilder::create(nullptr, module);
+  SysYF::Ptr<Type> Int32Type = Type::get_int32_type(module);
 
   // 全局数组,num,x
-  auto *arrayType_num = ArrayType::get(Int32Type, 2);
-  auto *arrayType_x = ArrayType::get(Int32Type, 1);
-  auto zero_initializer = ConstantZero::get(Int32Type, module);
-  std::vector<Constant *> init_val;
+  auto arrayType_num = ArrayType::get(Int32Type, 2);
+  auto arrayType_x = ArrayType::get(Int32Type, 1);
+  auto zero_initializer = ConstantZero::create(Int32Type, module);
+  std::vector<SysYF::Ptr<Constant>> init_val;
   init_val.push_back(CONST_INT(4));
   init_val.push_back(CONST_INT(8));
-  auto num_initializer = ConstantArray::get(arrayType_num, init_val);
+  auto num_initializer = ConstantArray::create(arrayType_num, init_val);
   auto num = GlobalVariable::create("num", module, arrayType_num, false, num_initializer);//          是否是常量定义，初始化常量(ConstantZero类)
   auto x = GlobalVariable::create("x", module, arrayType_x, false, zero_initializer);// 参数解释：  名字name，所属module，全局变量类型type，
 
@@ -41,10 +43,10 @@ int main() {
 
   // climbStairs函数
   // 函数参数类型的vector
-  std::vector<Type *> Ints(1, Int32Type);
+  std::vector<SysYF::Ptr<Type>> Ints(1, Int32Type);
 
   //通过返回值类型与参数类型列表得到函数类型
-  auto climbStairsFunTy = FunctionType::get(Int32Type, Ints);
+  auto climbStairsFunTy = FunctionType::create(Int32Type, Ints);
 
   // 由函数类型得到函数
   auto climbStairsFun = Function::create(climbStairsFunTy,
@@ -58,7 +60,7 @@ int main() {
   auto retAlloca = builder->create_alloca(Int32Type);   // 在内存中分配返回值的位置
   auto nAlloca = builder->create_alloca(Int32Type);     // 在内存中分配参数n的位置
 
-  std::vector<Value *> args;  // 获取climbStairs函数的形参,通过Function中的iterator
+  std::vector<SysYF::Ptr<Value>> args;  // 获取climbStairs函数的形参,通过Function中的iterator
   for (auto arg = climbStairsFun->arg_begin(); arg != climbStairsFun->arg_end(); arg++) {
     args.push_back(*arg);   // * 号运算符是从迭代器中取出迭代器当前指向的元素
   }
@@ -82,7 +84,7 @@ int main() {
   builder->create_br(retBB);  // br retBB
 
   builder->set_insert_point(falseBB);  // if false
-  auto *arrayType_dp = ArrayType::get(Int32Type, 10);
+   auto arrayType_dp = ArrayType::get(Int32Type, 10);
   auto dpAlloca = builder->create_alloca(arrayType_dp);
 
   auto dp0Gep = builder->create_gep(dpAlloca, {CONST_INT(0), CONST_INT(0)});
@@ -147,7 +149,7 @@ int main() {
   builder->create_ret(retLoad);
 
   // main函数
-  auto mainFun = Function::create(FunctionType::get(Int32Type, {}),
+  auto mainFun = Function::create(FunctionType::create(Int32Type, {}),
                                   "main", module);
   bb = BasicBlock::create(module, "entry", mainFun);
   // BasicBlock的名字在生成中无所谓,但是可以方便阅读
@@ -189,6 +191,5 @@ int main() {
   // 还有涉及到的C++语法,可以在gitlab上发issue提问或者向大家提供指导
   // 对于这个例子里的代码风格/用法,如果有好的建议也欢迎提出!
   std::cout << module->print();
-  delete module;
   return 0;
 }

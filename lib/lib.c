@@ -1,7 +1,7 @@
 #include<stdio.h>
 /* Input & output functions */
 int get_int(){int t; scanf("%d",&t); return t; }
-int get_float(){float t; scanf("%f",&t); return t; }
+float get_float(){float t; scanf("%f",&t); return t; }
 int get_char(){char c; scanf("%c",&c); return (int)c; }
 int get_int_array(int a[]){
   int n;

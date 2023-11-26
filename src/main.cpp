@@ -14,10 +14,9 @@ void print_help(const std::string& exe_name) {
 
 int main(int argc, char *argv[])
 {
-    IRBuilder builder;
     SysYFDriver driver;
-    SyntaxTreePrinter printer;
-    ErrorReporter reporter(std::cerr);
+    SysYF::SyntaxTree::SyntaxTreePrinter printer;
+    auto builder = SysYF::IR::IRBuilder::create();
 
     bool print_ast = false;
     bool print_ir = false;
@@ -48,8 +47,8 @@ int main(int argc, char *argv[])
     if (print_ast)
         root->accept(printer);
     if (print_ir) {
-        root->accept(builder);
-        auto m = builder.getModule();
+        root->accept(*builder);
+        auto m = builder->getModule();
         m->set_file_name(filename);
         m->set_print_name();
         auto IR = m->print();

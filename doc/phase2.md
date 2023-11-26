@@ -15,14 +15,14 @@
   <summary> go_upstairs_gen.cpp核心部分（点击展开） </summary>
 
 ```cpp
-    // 全局数组,num,x
-    auto *arrayType_num = ArrayType::get(Int32Type, 2);
-    auto *arrayType_x = ArrayType::get(Int32Type, 1);
-    auto zero_initializer = ConstantZero::get(Int32Type, module);
-    std::vector<Constant *> init_val;
+  // 全局数组,num,x
+    auto arrayType_num = ArrayType::get(Int32Type, 2);
+    auto arrayType_x = ArrayType::get(Int32Type, 1);
+    auto zero_initializer = ConstantZero::create(Int32Type, module);
+    std::vector<SysYF::Ptr<Constant>> init_val;
     init_val.push_back(CONST_INT(4));
     init_val.push_back(CONST_INT(8));
-    auto num_initializer = ConstantArray::get(arrayType_num, init_val);
+    auto num_initializer = ConstantArray::create(arrayType_num, init_val);
     auto num = GlobalVariable::create("num", module, arrayType_num, false, num_initializer);//          是否是常量定义，初始化常量(ConstantZero类)
     auto x = GlobalVariable::create("x", module, arrayType_x, false, zero_initializer);// 参数解释：  名字name，所属module，全局变量类型type，
 
@@ -31,26 +31,26 @@
 
     // climbStairs函数
     // 函数参数类型的vector
-    std::vector<Type *> Ints(1, Int32Type);
+    std::vector<SysYF::Ptr<Type>> Ints(1, Int32Type);
 
     //通过返回值类型与参数类型列表得到函数类型
-    auto climbStairsFunTy = FunctionType::get(Int32Type, Ints);
+    auto climbStairsFunTy = FunctionType::create(Int32Type, Ints);
 
     // 由函数类型得到函数
     auto climbStairsFun = Function::create(climbStairsFunTy,
-                                    "climbStairs", module);
+                                  "climbStairs", module);
 
     // BB的名字在生成中无所谓,但是可以方便阅读
     auto bb = BasicBlock::create(module, "entry", climbStairsFun);
-
+    
     builder->set_insert_point(bb);                        // 一个BB的开始,将当前插入指令点的位置设在bb
-
+    
     auto retAlloca = builder->create_alloca(Int32Type);   // 在内存中分配返回值的位置
     auto nAlloca = builder->create_alloca(Int32Type);     // 在内存中分配参数n的位置
 
-    std::vector<Value *> args;  // 获取climbStairs函数的形参,通过Function中的iterator
+    std::vector<SysYF::Ptr<Value>> args;  // 获取climbStairs函数的形参,通过Function中的iterator
     for (auto arg = climbStairsFun->arg_begin(); arg != climbStairsFun->arg_end(); arg++) {
-    args.push_back(*arg);   // * 号运算符是从迭代器中取出迭代器当前指向的元素
+      args.push_back(*arg);   // * 号运算符是从迭代器中取出迭代器当前指向的元素
     }
 
     builder->create_store(args[0], nAlloca);  // store参数n
@@ -72,7 +72,7 @@
     builder->create_br(retBB);  // br retBB
 
     builder->set_insert_point(falseBB);  // if false
-    auto *arrayType_dp = ArrayType::get(Int32Type, 10);
+    auto arrayType_dp = ArrayType::get(Int32Type, 10);
     auto dpAlloca = builder->create_alloca(arrayType_dp);
 
     auto dp0Gep = builder->create_gep(dpAlloca, {CONST_INT(0), CONST_INT(0)});

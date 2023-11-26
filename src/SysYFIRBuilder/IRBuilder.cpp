@@ -1,29 +1,33 @@
 #include "IRBuilder.h"
 
-#define CONST_INT(num) ConstantInt::get(num, module.get())
-#define CONST_FLOAT(num) ConstantFloat::get(num, module.get())
+namespace SysYF
+{
+namespace IR
+{
+#define CONST_INT(num) ConstantInt::create(num, module)
+#define CONST_FLOAT(num) ConstantFloat::create(num, module)
 
-// You can define global variables and functions here
+// You can define global variables here
 // to store state
 
 // store temporary value
-Value *tmp_val = nullptr;
+Ptr<Value> tmp_val = nullptr;
 
 // types
-Type *VOID_T;
-Type *INT1_T;
-Type *INT32_T;
-Type *FLOAT_T;
-Type *INT32PTR_T;
-Type *FLOATPTR_T;
+Ptr<Type> VOID_T;
+Ptr<Type> INT1_T;
+Ptr<Type> INT32_T;
+Ptr<Type> FLOAT_T;
+Ptr<Type> INT32PTR_T;
+Ptr<Type> FLOATPTR_T;
 
 void IRBuilder::visit(SyntaxTree::Assembly &node) {
-    VOID_T = Type::get_void_type(module.get());
-    INT1_T = Type::get_int1_type(module.get());
-    INT32_T = Type::get_int32_type(module.get());
-    FLOAT_T = Type::get_float_type(module.get());
-    INT32PTR_T = Type::get_int32_ptr_type(module.get());
-    FLOATPTR_T = Type::get_float_ptr_type(module.get());
+    VOID_T = Type::get_void_type(module);
+    INT1_T = Type::get_int1_type(module);
+    INT32_T = Type::get_int32_type(module);
+    FLOAT_T = Type::get_float_type(module);
+    INT32PTR_T = Type::get_int32_ptr_type(module);
+    FLOATPTR_T = Type::get_float_ptr_type(module);
     for (const auto &def : node.global_defs) {
         def->accept(*this);
     }
@@ -72,3 +76,6 @@ void IRBuilder::visit(SyntaxTree::WhileStmt &node) {}
 void IRBuilder::visit(SyntaxTree::BreakStmt &node) {}
 
 void IRBuilder::visit(SyntaxTree::ContinueStmt &node) {}
+
+}
+}

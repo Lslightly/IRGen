@@ -4,8 +4,10 @@
 #include <string>
 #include <iostream>
 
-using namespace SyntaxTree;
-
+namespace SysYF 
+{
+namespace SyntaxTree
+{
 std::map<Type, std::string> type2str = {
     {Type::INT, "int"},
     {Type::VOID, "void"},
@@ -80,7 +82,6 @@ void SyntaxTreePrinter::visit(BlockStmt &node)
 void SyntaxTreePrinter::visit(VarDef &node)
 {
     print_indent();
-    bool is_array = false;
     if (node.is_constant)
         std::cout << "const ";
     std::cout << type2str[node.btype] << " " << node.name;
@@ -88,23 +89,11 @@ void SyntaxTreePrinter::visit(VarDef &node)
         std::cout << "[";
         length->accept(*this);
         std::cout << "]";
-        is_array = true;
     }
     if (node.is_inited) {
         int tmp = indent;
         indent = 0;
         std::cout << " = ";
-        // if (is_array)
-        //     std::cout << "{";
-        // size_t num = 0;
-        // for (auto init : node.initializers) {
-        //     init->accept(*this);
-        //     if (num < node.initializers.size() - 1)
-        //         std::cout << ", ";
-        //     num++;
-        // }
-        // if (is_array)
-        //     std::cout << "}";
         node.initializers->accept(*this);
         indent = tmp;
     }
@@ -322,4 +311,7 @@ void SyntaxTreePrinter::visit(ContinueStmt &node)
     print_indent();
     std::cout << "continue";
     std::cout << ";" <<std::endl;
+}
+
+}
 }

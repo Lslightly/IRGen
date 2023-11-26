@@ -10,6 +10,10 @@
 #include <set>
 #include <string>
 
+namespace SysYF
+{
+namespace IR
+{
 class Function;
 class Instruction;
 class Module;
@@ -17,61 +21,66 @@ class Module;
 class BasicBlock : public Value
 {
 public:
-    static BasicBlock *create(Module *m, const std::string &name ,
-                            Function *parent ) {
+    static Ptr<BasicBlock> create(Ptr<Module> m, const std::string &name ,
+                            Ptr<Function> parent ) {
         auto prefix = name.empty() ? "" : "label_";
-        return new BasicBlock(m, prefix + name, parent);
+        RET_AFTER_INIT(BasicBlock, m, prefix + name, parent);
     }
 
     // return parent, or null if none.
-    Function *get_parent() { return parent_; }
+    Ptr<Function> get_parent() { return parent_; }
     
-    Module *get_module();
+    Ptr<Module> get_module();
 
     /****************api about cfg****************/
 
-    std::list<BasicBlock *> &get_pre_basic_blocks() { return pre_bbs_; }
-    std::list<BasicBlock *> &get_succ_basic_blocks() { return succ_bbs_; }
-    void add_pre_basic_block(BasicBlock *bb) { pre_bbs_.push_back(bb); }
-    void add_succ_basic_block(BasicBlock *bb) { succ_bbs_.push_back(bb); }
+    PtrList<BasicBlock> &get_pre_basic_blocks() { return pre_bbs_; }
+    PtrList<BasicBlock> &get_succ_basic_blocks() { return succ_bbs_; }
+    void add_pre_basic_block(Ptr<BasicBlock> bb) { pre_bbs_.push_back(bb); }
+    void add_succ_basic_block(Ptr<BasicBlock> bb) { succ_bbs_.push_back(bb); }
 
-    void remove_pre_basic_block(BasicBlock *bb) { pre_bbs_.remove(bb); }
-    void remove_succ_basic_block(BasicBlock *bb) { succ_bbs_.remove(bb); }
+    void remove_pre_basic_block(Ptr<BasicBlock> bb) { pre_bbs_.remove(bb); }
+    void remove_succ_basic_block(Ptr<BasicBlock> bb) { succ_bbs_.remove(bb); }
 
     /****************api about cfg****************/
 
     /// Returns the terminator instruction if the block is well formed or null
     /// if the block is not well formed.
-    const Instruction *get_terminator() const;
-    Instruction *get_terminator() {
-        return const_cast<Instruction *>(
-            static_cast<const BasicBlock *>(this)->get_terminator());
+    const Ptr<Instruction> get_terminator() const;
+    Ptr<Instruction> get_terminator() {
+        return const_pointer_cast<Instruction>(
+            static_pointer_cast<const BasicBlock>(shared_from_this())->get_terminator());
     }
     
-    void add_instruction(Instruction *instr);
-    void add_instruction(std::list<Instruction *>::iterator instr_pos, Instruction *instr);
-    void add_instr_begin(Instruction *instr);
+    void add_instruction(Ptr<Instruction> instr);
+    void add_instruction(PtrList<Instruction>::iterator instr_pos, Ptr<Instruction> instr);
+    void add_instr_begin(Ptr<Instruction> instr);
 
-    std::list<Instruction *>::iterator find_instruction(Instruction *instr);
+    PtrList<Instruction>::iterator find_instruction(Ptr<Instruction> instr);
 
-    void delete_instr(Instruction *instr);
+    void delete_instr(Ptr<Instruction> instr);
 
     bool empty() { return instr_list_.empty(); }
 
     int get_num_of_instr() { return instr_list_.size(); }
-    std::list<Instruction *> &get_instructions() { return instr_list_; }
+    PtrList<Instruction> &get_instructions() { return instr_list_; }
     
     void erase_from_parent();
     
     virtual std::string print() override;
 
 private:
-    explicit BasicBlock(Module *m, const std::string &name ,
-                        Function *parent );
-    std::list<BasicBlock *> pre_bbs_;
-    std::list<BasicBlock *> succ_bbs_;
-    std::list<Instruction *> instr_list_;
-    Function *parent_;
+    explicit BasicBlock(Ptr<Module> m, const std::string &name ,
+                        Ptr<Function> parent );
+    void init(Ptr<Module> m, const std::string &name ,
+                        Ptr<Function> parent );
+    PtrList<BasicBlock> pre_bbs_;
+    PtrList<BasicBlock> succ_bbs_;
+    PtrList<Instruction> instr_list_;
+    Ptr<Function> parent_;
 };
+
+}
+}
 
 #endif // _SYSYF_BASICBLOCK_H_

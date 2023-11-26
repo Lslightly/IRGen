@@ -269,42 +269,42 @@
 - 成员：
   
   - instr_list_：指令链表
-  - pre_basic_blocks_： bb前驱集合
-  - succ_basic_blocks_：bb后继集合
+  - pre_bbs_： bb前驱集合
+  - succ_bbs_：bb后继集合
   
 - API: 
 
   ```c++
   // 创建并返回BB块，参数分别是BB块所属的Module，name是其名字默认为空，BB块所属的Function
-  static BasicBlock *create(Module *m, const std::string &name , Function *parent )
+  static Ptr<BasicBlock> create(Ptr<Module> m, const std::string &name ,Ptr<Function> parent )
   // 返回BB块所属的函数
-  Function *get_parent();
+  Ptr<Function> get_parent();
   // 返回BB块所属的Module
-  Module *get_module();
+  Ptr<Module> get_module();
   // 返回BB块的终止指令(ret|br)，若BB块最后一条指令不是终止指令返回null
-  Instruction *get_terminator();
+  Ptr<Instruction> get_terminator();
   // 将instr指令添加到此BB块指令链表结尾，调用IRBuilder里来创建函数会自动调用此方法
-  void add_instruction(Instruction *instr);
+  void add_instruction(Ptr<Instruction> instr);
   // 将instr指令添加到此BB块指令链表开头
-  void add_instr_begin(Instruction *instr);
+  void add_instr_begin(Ptr<Instruction> instr);
   // 将instr指令从BB块指令链表中移除，同时调用api维护好instr的操作数的use链表
-  void delete_instr(Instruction *instr);
+  void delete_instr(Ptr<Instruction> instr);
   // BB块中指令数为空返回true
   bool empty();
   // 返回BB块中指令的数目
   int get_num_of_instr();
   //返回BB块的指令链表
-  std::list<Instruction *> &get_instructions();
+  PtrList<Instruction> &get_instructions();
   // 将此BB块从所属函数的bb链表中移除
   void erase_from_parent();
       
   /****************api about cfg****************/
-  std::list<BasicBlock *> &get_pre_basic_blocks() // 返回前驱块集合
-  std::list<BasicBlock *> &get_succ_basic_blocks() // 返回后继块集合
-  void add_pre_basic_block(BasicBlock *bb) // 添加前驱块
-  void add_succ_basic_block(BasicBlock *bb) // 添加后继块
-  void remove_pre_basic_block(BasicBlock *bb) // 移除前驱块
-  void remove_succ_basic_block(BasicBlock *bb) // 移除后继块
+  PtrList<BasicBlock> &get_pre_basic_blocks() // 返回前驱块集合
+  PtrList<BasicBlock> &get_succ_basic_blocks() // 返回后继块集合
+  void add_pre_basic_block(Ptr<BasicBlock> bb) // 添加前驱块
+  void add_succ_basic_block(Ptr<BasicBlock> bb) // 添加后继块
+  void remove_pre_basic_block(Ptr<BasicBlock> bb) // 移除前驱块
+  void remove_succ_basic_block(Ptr<BasicBlock> bb) // 移除后继块
   /****************api about cfg****************/
   
   ```
@@ -319,28 +319,28 @@
     
     - 成员
       
-      - val_：常数值
+      - value_：常数值
       
     - API
     
       ```cpp
       int get_value() // 返回该常数类型中存的常数值
-      static int get_value(ConstantInt *const_val)// 返回该常数类型const_val中存的常数值
-      static ConstantInt *get(int val, Module *m) // 以val值来创建常数类
-      static ConstantInt *get(bool val, Module *m) // 以val值来创建bool常数类
+      static int get_value(Ptr<ConstantInt> const_val)// 返回该常数类型const_val中存的常数值
+      static Ptr<ConstantInt> get(int val, Ptr<Module> m) // 以val值来创建常数类
+      static Ptr<ConstantInt> get(bool val, Ptr<Module> m) // 以val值来创建bool常数类
       ```
     
-  - ConstantFP
+  - ConstantFloat
     - 含义：float类型的常数
     
     - 成员
       
-      - val_：常数值
+      - value_：常数值
       
     - API
     
       ```cpp
-      static ConstantFP *get(float val, Module *m) // 以val值创建并返回浮点数常量类
+      static Ptr<ConstantFloat> get(float val, Ptr<Module> m) // 以val值创建并返回浮点数常量类
       float get_value() // 返回该常数类型中存的常数值
       ```
     
@@ -351,14 +351,14 @@
     - API
     
       ```cpp
-      static ConstantZero *get(Type *ty, Module *m);// 创建并返回ConstantZero常量类
+      static Ptr<ConstantZero> get(Ptr<Type> ty, Ptr<Module> m);// 创建并返回ConstantZero常量类
       ```
     
   - ConstantArray
 
     - 含义：数组类型的常数
     - 成员
-        - const_array_：数组常量值
+        - const_array：数组常量值
 
     - API：cminus语法不需要数组常量的支持（本次实验不需要用到），在此不过多解释。感兴趣可以自行查看源代码。
 ### Function
@@ -374,29 +374,29 @@
 - API
 
   ```cpp
-  static Function *create(FunctionType *ty, const std::string &name, Module *parent);
+  static Ptr<Function> create(Ptr<FunctionType> ty, const std::string &name, Ptr<Module> parent);
   // 创建并返回Function，参数依次是待创建函数类型ty、函数名字name(不可为空)、函数所属的Module
-  FunctionType *get_function_type() const;
+  Ptr<FunctionType> get_function_type() const;
   // 返回此函数类的函数类型
-  Type *get_return_type() const;
+  Ptr<Type> get_return_type() const;
   // 返回此函数类型的返回值类型
-  void add_basic_block(BasicBlock *bb);
+  void add_basic_block(Ptr<BasicBlock> bb);
   // 将bb添加至Function的bb链表上（调用bb里的创建函数时会自动调用此函数挂在function的bb链表上）
   unsigned get_num_of_args() const;
   // 得到函数形参数数量
   unsigned get_num_basic_blocks() const;
   // 得到函数基本块数量
-  Module *get_parent() const;
+  Ptr<Module> get_parent() const;
   // 得到函数所属的Module
-  std::list<Argument *>::iterator arg_begin() 
+  PtrList<Argument>::iterator arg_begin() 
   // 得到函数形参的list的起始迭代器
-  std::list<Argument *>::iterator arg_end() 
+  PtrList<Argument>::iterator arg_end()
   // 得到函数形参的list的终止迭代器
-  void remove(BasicBlock* bb) 
+  void remove(Ptr<BasicBlock>  bb)
   // 从函数的bb链表中删除一个bb
-  std::list<BasicBlock *> &get_basic_blocks() 
+  PtrList<BasicBlock> &get_basic_blocks()
   // 返回函数bb链表
-  std::list<Argument *> &get_args() 
+  PtrList<Argument> &get_args()
   // 返回函数的形参链表
   void set_instr_name();
   // 给函数中未命名的基本块和指令命名
@@ -415,7 +415,7 @@
     - API
     
       ```cpp
-      Function *get_parent() // 返回参数的所属函数
+      Ptr<Function> get_parent() // 返回参数的所属函数
       unsigned get_arg_no() const // 返回参数在所在函数的第几个参数
       ```
 ### GlobalVariable
@@ -431,9 +431,9 @@
 - API
 
   ```cpp
-  BasicBlock *get_insert_block()// 返回正在插入指令的BB
-  void set_insert_point(BasicBlock *bb)// 设置当前需要插入指令的bb
-  XXXInst *create_[instr_type]()// 创建instr_type(具体名字参考IRStmtBuilder.h代码)的指令并对应插入到正在插入的BB块，这种类型的指令看函数名字和参数名字和IR文档是一一对应的。
+  Ptr<BasicBlock> get_insert_block()// 返回正在插入指令的BB
+  void set_insert_point(Ptr<BasicBlock> bb)// 设置当前需要插入指令的bb
+  ptr<XXXInst> create_[instr_type]()// 创建instr_type(具体名字参考IRStmtBuilder.h代码)的指令并对应插入到正在插入的BB块，这种类型的指令看函数名字和参数名字和IR文档是一一对应的。
   ```
 
   
@@ -461,13 +461,13 @@
 - API
 
   ```cpp
-  Type *get_void_type(); 
+  Ptr<Type> get_void_type();
   // 得到IR中的void类型其他类型可以用类似的API得到(推荐取得类型采用lab3助教提供的方法Type::get())
-  void add_function(Function *f);
+  void add_function(Ptr<Function> f);
   // 将f挂在module的function链表上，在function被创建的时候会自动调用此方法来添加function
-  void add_global_variable(GlobalVariable* g);
+  void add_global_variable(Ptr<GlobalVariable> g);
   // 将g挂在module的GlobalVariable链表上，在GlobalVariable被创建的时候会自动调用此方法来添加GlobalVariable
-  std::list<GlobalVariable *> get_global_variable();
+  PtrList<GlobalVariable> &get_global_variable();
   // 获取全局变量列表
   std::string get_instr_op_name( Instruction::OpID instr )；
   // 获取instr对应的指令名(打印ir时调用)
@@ -509,17 +509,17 @@
     - API
     
       ```cpp
-      static FunctionType *get(Type *result, std::vector<Type*> params);
+      static Ptr<FunctionType> get(Ptr<Type> result, PtrVec<Type> params);
       // 返回函数类型，参数依次是返回值类型result，形参类型列表params
       unsigned get_num_of_args() const;
       // 返回形参个数
-      Type *get_param_type(unsigned i) const;
+      Ptr<Type> get_param_type(unsigned i) const;
       // 返回第i个形参的类型
-      std::vector<Type *>::iterator param_begin() 
+      PtrVec<Type>::iterator param_begin() 
       // 返回形参类型列表的起始迭代器
-      std::vector<Type *>::iterator param_end() 
+      PtrVec<Type>::iterator param_end() 
       // 返回形参类型列表的终止迭代器    
-      Type *get_return_type() const;
+      Ptr<Type> get_return_type() const;
       // 返回函数类型中的返回值类型
       ```
   - ArrayType
@@ -532,9 +532,9 @@
     - API
     
       ```cpp
-      static ArrayType *get(Type *contained, unsigned num_elements)
+      static Ptr<ArrayType> get(Ptr<Type> contained, unsigned num_elements);
       // 返回数组类型，参数依次是 数组元素的类型contained，数组元素个数num_elements
-      Type *get_element_type() const 
+      Ptr<Type> get_element_type() const
       // 返回数组元素类型
       unsigned get_num_of_elements() const
       // 返回数组元素个数
@@ -549,21 +549,22 @@
     - API
     
       ```cpp
-      Type *get_element_type() const { return contained_; }
+      Ptr<Type> get_element_type() const { return contained_; }
       // 返回指针指向的类型
-      static PointerType *get(Type *contained);
+      static Ptr<PointerType> get(Ptr<Type> contained);
+      // 返回contained类型的指针类型
+      Ptr<Type> get_pointer_element_type();// 若是PointerType则返回指向的类型，若不是则返回nullptr。
+      static Ptr<PointerType> create(Ptr<Type> contained);
       // 创建指向contained类型的指针类型
-      Type *get_pointer_element_type()
-      // 对于pointertype而言返回指针指向的类型，其他则返回nullptr
       ```
   
 - API
 
   ```cpp
   bool is_void_type()// 判断是否是void类型其他类型有类似API请查看Type.h
-  static Type *get_void_type(Module *m);// 得到void类型
-  Type *get_pointer_element_type();// 若是PointerType则返回指向的类型，若不是则返回nullptr。
-  Type *get_array_element_type();// 若是ArrayType则返回指向的类型，若不是则返回nullptr。
+  static Ptr<Type> get_void_type(Ptr<Module> m);// 得到void类型
+  Ptr<Type> get_pointer_element_type();// 若是PointerType则返回指向的类型，若不是则返回nullptr。
+  Ptr<Type> get_array_element_type();// 若是ArrayType则返回指向的类型，若不是则返回nullptr。
   ```
   
   
@@ -579,17 +580,17 @@
 - API
 
   ```cpp
-  Value *get_operand(unsigned i) const;
+  Ptr<Value> get_operand(unsigned i) const;
   // 从user的操作数链表中取出第i个操作数
-  void set_operand(unsigned i, Value *v);
+  void set_operand(unsigned i, Ptr<Value> v);
   // 将user的第i个操作数设为v
-  void add_operand(Value *v);
+  void add_operand(Ptr<Value> v);
   // 将v挂到User的操作数链表上
   unsigned get_num_operand() const;
   // 得到操作数链表的大小
   void remove_use_of_ops();
   // 从User的操作数链表中的所有操作数处的use_list_ 移除该User;
-  void remove_operands(int index1,int index2);
+  void remove_operands(int index1, int index2);
   // 移除操作数链表中索引为index1-index2的操作数，例如想删除第0个操作数：remove_operands(0,0)
   ```
 
@@ -604,16 +605,16 @@
 - API
 
   ```cpp
-  Type *get_type() const //返回这个操作数的类型
+  Ptr<Type> get_type() const //返回这个操作数的类型
   std::list<Use> &get_use_list() // 返回value的使用者链表
-  void add_use(Value *val, unsigned arg_no = 0);
+  void add_use(Ptr<Value> val, unsigned arg_no = 0);
   // 添加val至this的使用者链表上
-  void replace_all_use_with(Value *new_val);
+  void replace_all_use_with(Ptr<Value> new_val);
   // 将this在所有的地方用new_val替代，并且维护好use_def与def_use链表
-  void remove_use(Value *val);
+  void remove_use(Ptr<Value> val);
   // 将val从this的use_list_中移除
   ```
 
 ### 总结
 
-在本文档里提供了为SysYF语言程序生成LLVM IR可能需要用到的SysYF IR应用编程接口，如果对这些API有问题的请移步issue讨论，本次`SysYF IR`应用编程接口由助教自行设计实现，并做了大量测试，如有对助教的实现方法有异议或者建议的也请移步issue讨论，**请不要直接修改助教的代码，若因修改助教代码造成后续实验仓库合并的冲突请自行解决**。
+在本文档里提供了为SysYF语言程序生成LLVM IR可能需要用到的SysYF IR应用编程接口，如果对这些API有问题的请移步issue讨论，本次`SysYF IR`应用编程接口由助教自行设计实现，并做了大量测试，如有对助教的实现方法有异议或者建议的也请移步issue讨论，**除了选做内容无需修改助教代码**。
