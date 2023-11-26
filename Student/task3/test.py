@@ -9,7 +9,7 @@ Exe_ptn = '"{}"'
 def eval(EXE_PATH, TEST_BASE_PATH, optimization):
     print('===========TEST START===========')
     print('now in {}'.format(TEST_BASE_PATH))
-    succ = True
+    dir_succ = True
     for case in testcases:
         print('Case %s:' % case, end='')
         TEST_PATH = TEST_BASE_PATH + case
@@ -36,6 +36,7 @@ def eval(EXE_PATH, TEST_BASE_PATH, optimization):
                     out[i] = out[i].strip(b'\r')
                     if out[i] == b'':
                         out.remove(b'')
+                case_succ = True
                 with open(OUTPUT_PATH, "rb") as fout:
                     i = 0
                     for line in fout.readlines():
@@ -43,13 +44,15 @@ def eval(EXE_PATH, TEST_BASE_PATH, optimization):
                         if line == '':
                             continue
                         if out[i] != line:
-                            succ = False
-                            print(result.stdout[:100], result.returncode, out[i][:100], line[:100], end='')
-                            print('\t\033[31mWrong Answer\033[0m')
+                            dir_succ = False
+                            case_succ = False
                         i = i + 1
-                print(result.stderr.decode())
+                    if case_succ:
+                        print('\t\033[32mPass\033[0m')
+                    else:
+                        print('\t\033[31mWrong Answer\033[0m')
             except Exception as _:
-                succ = False
+                dir_succ = False
                 print(_, end='')
                 print('\t\033[31mCodeGen or CodeExecute Fail\033[0m')
             finally:
@@ -58,10 +61,9 @@ def eval(EXE_PATH, TEST_BASE_PATH, optimization):
                 subprocess.call(["rm", "-rf", TEST_PATH, TEST_PATH + ".ll"])
 
         else:
-            succ = False
-            print(IRBuild_result.stderr)
-            print('\t\033[31mIRBuilder Fail\033[0m')
-    if succ:
+            dir_succ = False
+            print('\t\033[31mIRBuild Fail\033[0m')
+    if dir_succ:
         print('\t\033[32mSuccess\033[0m in dir {}'.format(TEST_BASE_PATH))
     else:
         print('\t\033[31mFail\033[0m in dir {}'.format(TEST_BASE_PATH))
@@ -70,33 +72,21 @@ def eval(EXE_PATH, TEST_BASE_PATH, optimization):
 
 
 if __name__ == "__main__":
-    # you can only modify this
+
+    # you can only modify this to add your testcase
     TEST_DIRS = [
-                './Test_H/Easy_H/',
-                './Test_H/Medium_H/',
-                './Test_H/Hard_H/',
-                './Test/Easy/',
-                './Test/Medium/',
-                './Test/Hard/',
+                './test/',
                 ]
-    # you can only modify this
+    # you can only modify this to add your testcase
+
     optimization = "-O0"     # -O0 -O1 -O2 -O3 -O4(currently = -O3) -Ofast
     for TEST_BASE_PATH in TEST_DIRS:
         testcases = {}  # { name: need_input }
-        EXE_PATH = os.path.abspath('../../SysYF_TA/build/SysYFCompiler')
+        EXE_PATH = os.path.abspath('../../build/SysYFCompiler')
         testcase_list = list(map(lambda x: x.split('.'), os.listdir(TEST_BASE_PATH)))
         testcase_list.sort()
-        for i in range(len(testcase_list)-1, -1, -1):
-            if len(testcase_list[i]) == 1:
-                testcase_list.remove(testcase_list[i])
         for i in range(len(testcase_list)):
             testcases[testcase_list[i][0]] = False
         for i in range(len(testcase_list)):
             testcases[testcase_list[i][0]] = testcases[testcase_list[i][0]] | (testcase_list[i][1] == 'in')
         eval(EXE_PATH, TEST_BASE_PATH, optimization=optimization)
-        testcase = set()
-        for case_name in testcase_list:
-            testcase = testcase | set(case_name)
-        testcase = testcase - {'in', 'out', 'sy'}
-        print(TEST_BASE_PATH, "\t", len(testcase))
-        # print(sorted(testcase))
