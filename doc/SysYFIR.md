@@ -360,7 +360,7 @@
     - 成员
         - const_array：数组常量值
 
-    - API：cminus语法不需要数组常量的支持（本次实验不需要用到），在此不过多解释。感兴趣可以自行查看源代码。
+    - API：SysYF语法不需要数组常量的支持（本次实验不需要用到），在此不过多解释。感兴趣可以自行查看源代码。
 ### Function
 - 继承：从[Value](#value)继承
 
@@ -424,7 +424,7 @@
 - 成员：
   - is_const：是否为常量
   - init_val_：初始值
-- API：由于cminusf语义要求所有的全局变量都默认初始化为0，故`GlobalVariable`中成员和API再构造CminusFBuilder用不到
+- API：由于SysYF语义要求所有的全局变量都默认初始化为0，故`GlobalVariable`中成员和API再构造SysYFBuilder用不到
 ### IRStmtBuilder
 - 含义：生成IR的辅助类，该类提供了独立的接口创建各种 IR 指令，并将它们插入基本块中, 该辅助类不做任何类型检查。
 
