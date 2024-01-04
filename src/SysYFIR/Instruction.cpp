@@ -731,14 +731,13 @@ std::string SiToFpInst::print()
 }
 
 PhiInst::PhiInst(OpID op, PtrVec<Value> vals, PtrVec<BasicBlock> val_bbs, Ptr<Type> ty, Ptr<BasicBlock> bb)
-    : Instruction(ty, op, 2*vals.size())
+    : Instruction(ty, op, 2*vals.size(), bb)
 {
     
 }
 
 void PhiInst::init(OpID op, PtrVec<Value> vals, PtrVec<BasicBlock> val_bbs, Ptr<Type> ty, Ptr<BasicBlock> bb)
 {
-    Instruction::init(ty, op, 2*vals.size());
     for (unsigned int i = 0; i < vals.size(); i++)
     {
         set_operand(2*i, vals[i]);
