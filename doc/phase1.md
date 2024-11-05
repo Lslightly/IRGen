@@ -2,14 +2,16 @@
 
 ---
 
+**在阅读下面的文档之前，请确保先阅读**[README.md](../README.md)。
+
 ### 任务描述
 **本关任务**：熟悉LLVM IR，并根据给出的4个SysYF程序(文件扩展名为sy)手写相应的LLVM IR的ll文件，以实现相同功能。
 
 ### 相关知识
 #### LLVM IR介绍
 [LLVM](https://llvm.org/)是一个开源的编译器基础设施，用C++语言编写，包含一系列模块化的编译器组件和工具链，用来支持编译器前端和后端的开发。IR的全称是Intermediate Representation，即中间表示。LLVM IR是一种类型化的三地址中间表示，是类似于汇编的底层语言。  
-LLVM IR的具体指令可以参考[Reference Manual](http://llvm.org/docs/LangRef.html)。但是你会发现其内容庞杂，为便于你尽快了解本实训项目需要涉及的LLVM IR指令子集，请查看本实训提供的**精简的IR Reference手册**`doc/SysYFIR.md`。  
-作为一开始的参考，你可以先阅读其中的`IR Features`和`IR Format`两节，后续有需要再反复参考。
+LLVM IR的具体指令可以参考[Reference Manual](http://llvm.org/docs/LangRef.html)。但是你会发现其内容庞杂，为便于你尽快了解本实训项目需要涉及的LLVM IR指令子集，请查看本实训提供的**精简的IR Reference手册**`doc/SysYFIR.md`。
+作为一开始的参考，你可以先阅读其中的[IR Features](SysYFIR.md#ir-features)和[IR Format](SysYFIR.md#ir-format)两节，后续有需要再反复参考。
 
 #### 样例学习
 <details>
@@ -63,7 +65,7 @@ int main(){
 你需要在`Student/task1/ll/`目录下手工编写`assign_hand.ll`，`func_hand.ll`，`if_hand.ll`，`while_hand.ll`文件，以实现与上述 SysYF 程序相同的逻辑功能。  
 你需要在`ll`文件内添加必要的注释，`ll`文件的注释是以`;`开头的。  
 必要的情况下，你可以参考`clang -S -emit-llvm`的输出，但是你提交的结果必须避免同此输出一字不差。  
-2. 在`report.md`内回答[思考题](#思考题)
+2. 在`report.md`内回答<a href="#思考题">思考题</a>
 
 ### 运行说明
 - 你需要使用 `clang --version` 和 `lli --version` 检查本机的Clang和LLVM版本
@@ -77,3 +79,4 @@ int main(){
 请在`report/report.md`中详细回答下述思考题：
 1-1 请给出while语句对应的LLVM IR的代码布局特点，重点解释其中涉及的几个`br`指令的含义（包含各个参数的含义）
 1-2 请简述函数调用语句对应的LLVM IR的代码特点
+

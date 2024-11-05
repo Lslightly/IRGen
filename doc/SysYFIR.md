@@ -262,7 +262,7 @@
 ![](figs/核心类概念图.png)
 
 ### BasicBlock
-- 继承：从[value](#value)继承
+- 继承：从[Value](#value)继承
 
 - 含义：基本块，是一个是单入单出的代码块，该类维护了一个指令链表，基本块本身属于 Value, 类型是 \<label\>，会被分支指令调用
 
@@ -299,8 +299,8 @@
   void erase_from_parent();
       
   /****************api about cfg****************/
-  PtrList<BasicBlock> &get_pre_basic_blocks() // 返回前驱块集合
-  PtrList<BasicBlock> &get_succ_basic_blocks() // 返回后继块集合
+  std::vector<std::weak_ptr<BasicBlock>> &get_pre_basic_blocks() // 返回前驱块集合
+  std::vector<std::weak_ptr<BasicBlock>> &get_succ_basic_blocks() // 返回后继块集合
   void add_pre_basic_block(Ptr<BasicBlock> bb) // 添加前驱块
   void add_succ_basic_block(Ptr<BasicBlock> bb) // 添加后继块
   void remove_pre_basic_block(Ptr<BasicBlock> bb) // 移除前驱块
@@ -515,10 +515,6 @@
       // 返回形参个数
       Ptr<Type> get_param_type(unsigned i) const;
       // 返回第i个形参的类型
-      PtrVec<Type>::iterator param_begin() 
-      // 返回形参类型列表的起始迭代器
-      PtrVec<Type>::iterator param_end() 
-      // 返回形参类型列表的终止迭代器    
       Ptr<Type> get_return_type() const;
       // 返回函数类型中的返回值类型
       ```
@@ -613,8 +609,11 @@
   // 将this在所有的地方用new_val替代，并且维护好use_def与def_use链表
   void remove_use(Ptr<Value> val);
   // 将val从this的use_list_中移除
+  template <typename T>
+  Ptr<T> as();
+  // Ptr<Value> value通过value->as<Function>()转为子类型指针Ptr<Function>，封装了dynamic_pointer_cast
   ```
 
 ### 总结
 
-在本文档里提供了为SysYF语言程序生成LLVM IR可能需要用到的SysYF IR应用编程接口，如果对这些API有问题的请移步issue讨论，本次`SysYF IR`应用编程接口由助教自行设计实现，并做了大量测试，如有对助教的实现方法有异议或者建议的也请移步issue讨论，**除了选做内容无需修改助教代码**。
+在本文档里提供了为SysYF语言程序生成LLVM IR可能需要用到的SysYF IR应用编程接口，如果对这些API有问题的请移步issue讨论，本次`SysYF IR`应用编程接口由助教自行设计实现，并做了大量测试，如有对助教的实现方法有异议或者建议的也请移步issue讨论。

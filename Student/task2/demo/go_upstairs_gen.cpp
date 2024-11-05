@@ -34,7 +34,7 @@ int main() {
   std::vector<SysYF::Ptr<Constant>> init_val;
   init_val.push_back(CONST_INT(4));
   init_val.push_back(CONST_INT(8));
-  auto num_initializer = ConstantArray::create(arrayType_num, init_val);
+  auto num_initializer = ConstantArray::create(arrayType_num, init_val, module);
   auto num = GlobalVariable::create("num", module, arrayType_num, false, num_initializer);//          是否是常量定义，初始化常量(ConstantZero类)
   auto x = GlobalVariable::create("x", module, arrayType_x, false, zero_initializer);// 参数解释：  名字name，所属module，全局变量类型type，
 
@@ -46,7 +46,7 @@ int main() {
   std::vector<SysYF::Ptr<Type>> Ints(1, Int32Type);
 
   //通过返回值类型与参数类型列表得到函数类型
-  auto climbStairsFunTy = FunctionType::create(Int32Type, Ints);
+  auto climbStairsFunTy = FunctionType::create(Int32Type, Ints, module);
 
   // 由函数类型得到函数
   auto climbStairsFun = Function::create(climbStairsFunTy,
@@ -149,7 +149,7 @@ int main() {
   builder->create_ret(retLoad);
 
   // main函数
-  auto mainFun = Function::create(FunctionType::create(Int32Type, {}),
+  auto mainFun = Function::create(FunctionType::create(Int32Type, {}, module),
                                   "main", module);
   bb = BasicBlock::create(module, "entry", mainFun);
   // BasicBlock的名字在生成中无所谓,但是可以方便阅读

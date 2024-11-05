@@ -3,10 +3,11 @@
 
 #include "Value.h"
 #include "Instruction.h"
-#include "Module.h"
-#include "Function.h"
+#include "internal_macros.h"
+#include "internal_types.h"
 
 #include <list>
+#include <memory>
 #include <set>
 #include <string>
 
@@ -28,19 +29,25 @@ public:
     }
 
     // return parent, or null if none.
-    Ptr<Function> get_parent() { return parent_; }
+    Ptr<Function> get_parent() { return parent_.lock(); }
     
     Ptr<Module> get_module();
 
     /****************api about cfg****************/
 
-    PtrList<BasicBlock> &get_pre_basic_blocks() { return pre_bbs_; }
-    PtrList<BasicBlock> &get_succ_basic_blocks() { return succ_bbs_; }
+    std::list<std::weak_ptr<BasicBlock>> &get_pre_basic_blocks() { return pre_bbs_; }
+    std::list<std::weak_ptr<BasicBlock>> &get_succ_basic_blocks() { return succ_bbs_; }
     void add_pre_basic_block(Ptr<BasicBlock> bb) { pre_bbs_.push_back(bb); }
     void add_succ_basic_block(Ptr<BasicBlock> bb) { succ_bbs_.push_back(bb); }
 
-    void remove_pre_basic_block(Ptr<BasicBlock> bb) { pre_bbs_.remove(bb); }
-    void remove_succ_basic_block(Ptr<BasicBlock> bb) { succ_bbs_.remove(bb); }
+    void remove_pre_basic_block(Ptr<BasicBlock> bb) {
+        auto match = [bb](const std::weak_ptr<BasicBlock> &ptr) { return ptr.lock() == bb; };
+        pre_bbs_.remove_if(match);
+    }
+    void remove_succ_basic_block(Ptr<BasicBlock> bb) {
+        auto match = [bb](const std::weak_ptr<BasicBlock> &ptr) { return ptr.lock() == bb; };
+        succ_bbs_.remove_if(match);
+    }
 
     /****************api about cfg****************/
 
@@ -74,10 +81,10 @@ private:
                         Ptr<Function> parent );
     void init(Ptr<Module> m, const std::string &name ,
                         Ptr<Function> parent );
-    PtrList<BasicBlock> pre_bbs_;
-    PtrList<BasicBlock> succ_bbs_;
+    std::list<std::weak_ptr<BasicBlock>> pre_bbs_;
+    std::list<std::weak_ptr<BasicBlock>> succ_bbs_;
     PtrList<Instruction> instr_list_;
-    Ptr<Function> parent_;
+    std::weak_ptr<Function> parent_;
 };
 
 }

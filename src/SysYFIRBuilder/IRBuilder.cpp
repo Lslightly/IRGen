@@ -1,4 +1,8 @@
 #include "IRBuilder.h"
+#include "BasicBlock.h"
+#include "Function.h"
+#include "SyntaxTree.h"
+#include "Type.h"
 
 namespace SysYF
 {
@@ -6,12 +10,6 @@ namespace IR
 {
 #define CONST_INT(num) ConstantInt::create(num, module)
 #define CONST_FLOAT(num) ConstantFloat::create(num, module)
-
-// You can define global variables here
-// to store state
-
-// store temporary value
-Ptr<Value> tmp_val = nullptr;
 
 // types
 Ptr<Type> VOID_T;
@@ -37,7 +35,13 @@ void IRBuilder::visit(SyntaxTree::Assembly &node) {
 
 void IRBuilder::visit(SyntaxTree::InitVal &node) {}
 
-void IRBuilder::visit(SyntaxTree::FuncDef &node) {}
+void IRBuilder::visit(SyntaxTree::FuncDef &node) {
+    auto fn = Function::create(FunctionType::create(INT32_T, {}, this->module), "main", this->module);
+    this->cur_func = fn;
+    auto entry = BasicBlock::create(this->module, "entry", fn);
+    builder->set_insert_point(entry);
+    node.body->accept(*this);
+}
 
 void IRBuilder::visit(SyntaxTree::FuncFParamList &node) {}
 
@@ -49,11 +53,34 @@ void IRBuilder::visit(SyntaxTree::LVal &node) {}
 
 void IRBuilder::visit(SyntaxTree::AssignStmt &node) {}
 
-void IRBuilder::visit(SyntaxTree::Literal &node) {}
+void IRBuilder::visit(SyntaxTree::Literal &node) {
+    switch (node.literal_type)
+    {
+    case SyntaxTree::Type::INT: {
+        this->visitee_val = CONST_INT(node.int_const);
+        break;
+    }
+    case SyntaxTree::Type::FLOAT: {
+        this->visitee_val = CONST_FLOAT(node.float_const);
+        break;
+    }
+    default:
+        throw UnreachableException();
+        break;
+    }
+}
 
-void IRBuilder::visit(SyntaxTree::ReturnStmt &node) {}
+void IRBuilder::visit(SyntaxTree::ReturnStmt &node) {
+    this->visitee_val.reset();
+    node.ret->accept(*this);
+    builder->create_ret(this->visitee_val);
+}
 
-void IRBuilder::visit(SyntaxTree::BlockStmt &node) {}
+void IRBuilder::visit(SyntaxTree::BlockStmt &node) {
+    for (auto stmt: node.body) {
+        stmt->accept(*this);
+    }
+}
 
 void IRBuilder::visit(SyntaxTree::EmptyStmt &node) {}
 
@@ -67,7 +94,8 @@ void IRBuilder::visit(SyntaxTree::BinaryExpr &node) {}
 
 void IRBuilder::visit(SyntaxTree::UnaryExpr &node) {}
 
-void IRBuilder::visit(SyntaxTree::FuncCallStmt &node) {}
+void IRBuilder::visit(SyntaxTree::FuncCallStmt &node) {
+}
 
 void IRBuilder::visit(SyntaxTree::IfStmt &node) {}
 

@@ -1,87 +1,10 @@
+[TOC]
+
 # AST
 
 **源码链接：**
 
-[SyntaxTree.h](../include/SyntaxTree.h)
-
-[SyntaxTree.cpp](../src/SyntaxTree.cpp)
-
-
-## 目录
-
-[Ptr](#ptr)
-
-[PtrLst](#ptrlist)
-
-[Position](#position)
-
-[Type](#type)
-
-[Binop](#binop)
-
-[UnaryOp](#unaryOp)
-
-[UnaryCondOp](#unarycondop)
-
-[BinaryCondOp](#binarycondop)
-
-[Node](#node)
-
-[Assembly](#assembly)
-
-[InitVal](#initval)
-
-[GlobalDef](#globaldef)
-
-[FuncDef](#funcdef)
-
-[VarDef](#vardef)
-
-[Stmt](#stmt)
-
-[AssignStmt](#assignstmt)
-
-[ReturnStmt](#returnstmt)
-
-[BlockStmt](#blockstmt)
-
-[EmptyStmt](#emptystmt)
-
-[ExprStmt](#exprstmt)
-
-[Expr](#expr)
-
-[CondExpr](#condexpr)
-
-[AddExpr](#addexpr)
-
-[UnaryCondExpr](#unarycondexpr)
-
-[BinaryCondExpr](#binarycondexpr)
-
-[BinaryExpr](#binaryexpr)
-
-[UnaryExpr](#unaryexpr)
-
-[LVal](#lval)
-
-[Literal](#literal)
-
-[FuncCallStmt](#funccallstmt)
-
-[FuncParam](#funcparam)
-
-[FuncFParamList](#funcfparamlist)
-
-[IfStmt](#ifstmt)
-
-[WhileStmt](#whilestmt)
-
-[BreakStmt](#breakstmt)
-
-[ContinueStmt](#continuestmt)
-
-[Visitor](#visitor)
+[SyntaxTree.h](../include/AST/SyntaxTree.h), [SyntaxTree.cpp](../src/AST/SyntaxTree.cpp)
 
 ## Ptr
 

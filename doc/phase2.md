@@ -6,9 +6,16 @@
 **本关任务**：熟悉SysYF IR的应用编程接口，并根据给出的4个SysYF程序手写调用SysYF IR应用编程接口的C++代码，生成与sy文件功能相同的ll文件。
 
 ### 相关知识
+
+#### SysYF语言定义
+
+SysYF语言定义见`SysYF语言定义.pdf`。该文档包含了部分语义说明(如同名标识符的约定等)。
+
+> 为了减小实验难度，本实验中限制数组只能是一维数组，并且声明的数组长度必须是单个字面量数字，不能是其他表达式。但是访问数组元素时下标可以使用复杂的表达式。
+
 #### SysYF IR 应用编程接口
-由于LLVM IR官方的C++应用编程接口的文档内容繁多，本实训项目提供SysYF IR应用编程接口库，该库用C++编写，可以用于生成LLVM IR的子集。你需要阅读**SysYF IR核心类的介绍**`doc/SysYFIR.md`。  
-本关要求你根据AST，使用SysYF IR应用编程接口来构建生成LLVM IR。你需要先仔细阅读文档`doc/SysYFIR.md`以了解其接口的设计。
+由于LLVM IR官方的C++应用编程接口的文档内容繁多，本实训项目提供SysYF IR应用编程接口库，该库用C++编写，可以用于生成LLVM IR的子集。你需要阅读**SysYF IR核心类的介绍** [doc/SysYFIR.md](./SysYFIR.md)。  
+本关要求你根据AST，使用SysYF IR应用编程接口来构建生成LLVM IR。你需要先仔细阅读文档[doc/SysYFIR.md](./SysYFIR.md)以了解其接口的设计。
 
 #### 样例学习
 <details>
@@ -22,7 +29,7 @@
     std::vector<SysYF::Ptr<Constant>> init_val;
     init_val.push_back(CONST_INT(4));
     init_val.push_back(CONST_INT(8));
-    auto num_initializer = ConstantArray::create(arrayType_num, init_val);
+    auto num_initializer = ConstantArray::create(arrayType_num, init_val, module);
     auto num = GlobalVariable::create("num", module, arrayType_num, false, num_initializer);//          是否是常量定义，初始化常量(ConstantZero类)
     auto x = GlobalVariable::create("x", module, arrayType_x, false, zero_initializer);// 参数解释：  名字name，所属module，全局变量类型type，
 
@@ -34,7 +41,7 @@
     std::vector<SysYF::Ptr<Type>> Ints(1, Int32Type);
 
     //通过返回值类型与参数类型列表得到函数类型
-    auto climbStairsFunTy = FunctionType::create(Int32Type, Ints);
+    auto climbStairsFunTy = FunctionType::create(Int32Type, Ints, module);
 
     // 由函数类型得到函数
     auto climbStairsFun = Function::create(climbStairsFunTy,
@@ -98,31 +105,33 @@
 ```
 </details>
 
-为了更直观地感受并学会使用 SysYF IR应用编程接口，本实训项目提供了示例代码，位于`Student/task2/demo/go_upstairs_gen.cpp`。  
-该C++程序会生成与go_upstairs.c逻辑相同的LLVM IR文件，在该C++程序中提供了详尽的注释，请阅读理解，以便更好地开展你的实验！  
+为了更直观地感受并学会使用 SysYF IR应用编程接口，本实训项目提供了示例代码，位于[Student/task2/demo/go_upstairs_gen.cpp](../Student/task2/demo/go_upstairs_gen.cpp)。  
+该C++程序会生成与[go_upstairs.sy](../Student/task2/demo/go_upstairs.sy)逻辑相同的LLVM IR文件，在该C++程序中提供了详尽的注释，请阅读理解，以便更好地开展你的实验！  
 
 ### 本关具体任务
-1. 你需要在`Student/task2/cpp/`文件夹中，调用SysYF IR应用编程接口，编写自己的 `assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`程序，以生成与第1关的四个sy 程序相同逻辑功能的ll文件。
-2. 在`report.md`内回答[思考题](#思考题)
+1. 你需要在[Student/task2/cpp/](../Student/task2/cpp/)文件夹中，调用SysYF IR应用编程接口，编写自己的 [assign_gen.cpp](../Student/task2/cpp/assign_gen.cpp)，[func_gen.cpp](../Student/task2/cpp/func_gen.cpp)，[if_gen.cpp](../Student/task2/cpp/if_gen.cpp)，[while_gen.cpp](../Student/task2/cpp/while_gen.cpp)程序，以生成与第1关的四个sy 程序相同逻辑功能的ll文件。
+2. 在[report/report.md](../report/report.md)内回答<a href="#思考题">思考题</a>
 
 ### 编译、运行和验证
-在 `Student/task2/build/` 下执行:
+在 `build/` 下执行:
 ``` shell
 # 如果存在 CMakeCache.txt 要先删除
 # rm CMakeCache.txt
 cmake ..
-make
+make -j # 并行编译
 ```
-你可以得到对应 `assign_gen.cpp`，`func_gen.cpp`，`if_gen.cpp`，`while_gen.cpp`，`go_upstairs_gen.cpp`的可执行文件`assign_generator`，`func_generator`，`if_generator`，`while_generator`，`go_upstairs_generator`。  
+你可以在`build/Student/task2`中得到[assign_gen.cpp](../Student/task2/cpp/assign_gen.cpp)，[func_gen.cpp](../Student/task2/cpp/func_gen.cpp)，[if_gen.cpp](../Student/task2/cpp/if_gen.cpp)，[while_gen.cpp](../Student/task2/cpp/while_gen.cpp)对应的可执行文件`assign_generator`，`func_generator`，`if_generator`，`while_generator`，`go_upstairs_generator`。  
 之后直接执行可执行文件，即可得到对应的ll文件：  
 ``` shell
-# 在build文件夹内
+# 在build/Student/task2文件夹内
 ./go_upstairs_generator
+# 将stdout重定向到go_upstairs.ll
+./go_upstairs_generator > go_upstairs.ll
 ```
 
 ### 思考题
-请在`report/report.md`中详细回答下述思考题：
+请在[report/report.md](../report/report.md)中详细回答下述思考题：
 
-2-1. 请给出`SysYFIR.md`中提到的两种getelementptr用法的区别, 并解释原因:
+2-1. 请给出[doc/SysYFIR.md](./SysYFIR.md)中提到的两种 `getelementptr` 用法的区别, 并解释原因:
   - `%2 = getelementptr [10 x i32], [10 x i32]* %1, i32 0, i32 %0` 
   - `%2 = getelementptr i32, i32* %1, i32 %0`

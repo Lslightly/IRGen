@@ -1,3 +1,5 @@
- .vscode
- build
- 
+.vscode/*
+!.vsocde/launch.json
+!.vscode/c_cpp_properties.json
+build
+.cache

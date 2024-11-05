@@ -1,5 +1,5 @@
-# PW6 实验文档
-- [PW6 实验文档](#pw6-实验文档)
+# 实验文档
+- [实验文档](#实验文档)
   - [0. 前言](#0-前言)
     - [主要工作](#主要工作)
   - [1. 实验要求](#1-实验要求)
@@ -7,9 +7,11 @@
     - [1.2 提交要求和评分标准](#12-提交要求和评分标准)
 ## 0. 前言
 
-本次实验分为3关，为组队实验。**本次实验请务必使用git提交**。    
+本次实验分为3关，为组队实验。**本次实验请务必使用git提交**。前2关请各自完成，第3关请合理进行分工协作。
 本次实验的目的是让大家熟悉生成中间代码所需要的相关知识: LLVM IR、 SysYF IR（LLVM IR的轻量级C++接口），并实际实现一个IR Builder。
-在开始实验之前，请确保LLVM的版本不低于10.0.1，且PATH环境变量配置正确。可以通过`lli --version`命令是否可以输出10.0.1的版本信息来验证。
+在开始实验之前，请确保LLVM的版本不低于10.0.1，且PATH环境变量配置正确。
+
+实验配置见[./doc/prerequisite.md](./doc/prerequisite.md)。
 
 ### 主要工作
 
@@ -21,7 +23,9 @@
 ## 1. 实验要求
 
 ### 1.1 目录结构
-除了下面指明你所要修改或提交的文件，其他文件请勿修改。
+
+除了下面指明你所要修改或提交的文件，其他文件请勿修改。如果有接口不方便或者不清楚的情况，请在[course仓库的issue版块](https://git.lug.ustc.edu.cn/compiler/course/-/issues)提issue。
+
 ``` log
 .
 ├── CMakeLists.txt
@@ -31,55 +35,62 @@
 │   ├── phase1.md                       <- 各阶段文档
 │   ├── phase2.md
 │   ├── phase3.md
+│   ├── prerequisite.md                 <- 实验预备文档
 │   ├── SysYF语言定义.pdf
-|   └── SysYFIR.md                      <- SysYF IR 应用编程接口相关文档
+│   └── SysYFIR.md                      <- SysYF IR 应用编程接口相关文档
 ├── report
 │   ├── report.md                       <- 需提交的实验报告
 │   └── contribution.md                 <- 需提交的组员贡献（队长负责填写）
 ├── include                             <- 实验所需的头文件
 │   ├── ...
-│   └── SysYFIR
+│   ├── AST                             <- 语法树定义
+│   ├── internal_macros.h               <- 包含RET_AFTER_INIT宏，在create工厂函数中使用，会自动调用init函数
+│   ├── internal_types.h
+│   ├── SysYFIR                         <- 中间表示定义
+│   └── SysYFIRBuilder
+│       └── IRBuilder.h                 <- 你可以在第三关任务中修改的文件
 ├── src
 │   ├── ...
 │   ├── SysYFIR
 │   └── SysYFIRBuilder
-|       ├── CMakeLists.txt
-|       └── IRBuilder.cpp               <- 你需要在第三关任务中修改的文件
-└── Student
-    ├── task1						   <- 第一关任务相关的目录
-    |   ├── ll                          <- 需提交的LLVM IR文件(.ll)的目录（第一关）
-    |   |   ├── assign_hand.ll
-    |   │   ├── fun_hand.ll
-    |   │   ├── if_hand.ll
-    |   │   └── while_hand.ll
-    |   ├── sy
-    |   |   ├── assign_test.sy
-    |   │   ├── fun_test.sy
-    |   │   ├── if_test.sy
-    |   │   └── while_test.sy
-    |   └── demo
-    |       └── go_upstairs.c
-    ├── task2						   <- 第二关任务相关的目录
-    ├── CMakeLists.txt
-    |   ├── cpp                         <- 需提交的.cpp目录（第二关）
-    |   |   ├── CMakeLists.txt
-    |   |   ├── assign_gen.cpp
-    |   │   ├── fun_gen.cpp
-    |   │   ├── if_gen.cpp
-    |   │   └── while_gen.cpp
-    |   ├── sy
-    |   |   ├── assign_test.sy
-    |   │   ├── fun_test.sy
-    |   │   ├── if_test.sy
-    |   │   └── while_test.sy
-    |   └── demo
-    |       |── CMakeLists.txt
-    |       |── go_upstairs.sy
-    |       └── go_upstairs_gen.cpp     <- 打印go_upstairs.ll的cpp文件
-    └── task3
-        └── test
-            ├── test.py                 <- 第三关任务的评测脚本
-            └── test                    <- 测试样例文件夹
+│       ├── CMakeLists.txt
+│       └── IRBuilder.cpp               <- 你需要在第三关任务中修改的文件
+├── Student
+│   ├── task1						    <- 第一关任务相关的目录
+│   │   ├── ll                          <- 需提交的LLVM IR文件(.ll)的目录（第一关）
+│   │   │   ├── assign_hand.ll
+│   │   │   ├── fun_hand.ll
+│   │   │   ├── if_hand.ll
+│   │   │   └── while_hand.ll
+│   │   ├── sy
+│   │   │   ├── assign_test.sy
+│   │   │   ├── fun_test.sy
+│   │   │   ├── if_test.sy
+│   │   │   └── while_test.sy
+│   │   └── demo
+│   │       └── go_upstairs.c
+│   ├── task2						    <- 第二关任务相关的目录
+│   ├── CMakeLists.txt
+│   │   ├── cpp                         <- 需提交的.cpp目录（第二关）
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── assign_gen.cpp
+│   │   │   ├── fun_gen.cpp
+│   │   │   ├── if_gen.cpp
+│   │   │   └── while_gen.cpp
+│   │   ├── sy
+│   │   │   ├── assign_test.sy
+│   │   │   ├── fun_test.sy
+│   │   │   ├── if_test.sy
+│   │   │   └── while_test.sy
+│   │   └── demo
+│   │       ├── CMakeLists.txt
+│   │       ├── go_upstairs.sy
+│   │       └── go_upstairs_gen.cpp     <- 打印go_upstairs.ll的cpp文件
+│   └── task3
+│       └── test
+│           ├── test.py                 <- 第三关任务的评测脚本
+│           └── test                    <- 测试样例文件夹
+└── sysyf_ref                           <- 第三关参考实现
 ```
 
 ### 1.2 提交要求和评分标准
@@ -91,10 +102,10 @@
     * 需要完成 `./src/SysYFIRBuilder/IRBuilder.cpp`
     * 需要在 `./report/report.md` 中撰写实验报告
       * 实验报告内容包括:
-        * 实验要求、问题回答、实验设计、实验难点及解决方案、实验总结、实验反馈、组间交流(具体参考[report.md](./report.md))
+        * 实验要求、问题回答、实验设计、实验难点及解决方案、实验总结、实验反馈、组间交流(具体参考[report.md](report/report.md))
         * 本次实验报告**参与**评分标准.
   * 提交规范: 
-    * 不破坏目录结构(`report.md`如果需要放图片，请新建`figs`文件夹放在`./report`下，并将图片放在`figs`文件夹内)
+    * 不破坏目录结构(`report.md`如果需要放图片，请在`figs`文件夹下存在。`figs`文件夹中的`.gitkeep`使得该目录可以被git跟踪)
     * 不上传临时文件(凡是自动生成的文件和临时文件请不要上传)
 * **组队实验要求**
   * 由队长在 `./report/contribution.md` 中解释每位队员的贡献，并说明贡献比例
@@ -109,9 +120,9 @@
   * 线下: 线下检查只检查第三部分, 组长带组员到负责组长的助教处检查, 选做部分请找本次实验负责助教检查
 * 迟交规定
   * 迟交需要邮件通知助教: 
-    * 邮箱: xuchaijun@mail.ustc.edu.cn
-    * 邮件主题: PW6迟交-学号
+    * 邮箱: ch12o6@mail.ustc.edu.cn
+    * 邮件主题: P6迟交-学号
     * 内容: 包括迟交原因、最后版本commit ID、迟交时间等
 * 关于抄袭和雷同
   经过助教和老师判定属于作业抄袭或雷同情况，所有参与方一律零分，不接受任何解释和反驳。
-如有任何问题，欢迎提issue进行批判指正。
+如有任何问题，欢迎在[course仓库的issue版块](https://git.lug.ustc.edu.cn/compiler/course/-/issues)提issue进行批判指正。

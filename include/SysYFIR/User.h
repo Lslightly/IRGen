@@ -2,6 +2,7 @@
 #define _SYSYF_USER_H_
 
 #include "Value.h"
+#include <memory>
 #include <vector>
 // #include <memory>
 
@@ -13,8 +14,6 @@ class User : public Value
 {
 public:
     ~User() = default;
-
-    PtrVec<Value>& get_operands();
 
     // start from 0
     Ptr<Value> get_operand(unsigned i) const;
@@ -32,7 +31,7 @@ protected:
     explicit User(Ptr<Type> ty, const std::string &name = "", unsigned num_ops = 0);
 
 private:
-    PtrVec<Value> operands_;   // operands of this value
+    std::vector<std::weak_ptr<Value>> operands_;   // operands of this value
     unsigned num_ops_;
 };
 
