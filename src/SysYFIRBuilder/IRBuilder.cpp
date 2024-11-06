@@ -31,7 +31,8 @@ void IRBuilder::visit(SyntaxTree::Assembly &node) {
     }
 }
 
-// You need to fill them
+// TODO: You need to fill them.
+// NOTE: The following codes are just examples, you can modify them as you like.
 
 void IRBuilder::visit(SyntaxTree::InitVal &node) {}
 
