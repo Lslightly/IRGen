@@ -39,7 +39,7 @@ public:
     void add_function(Ptr<Function> f);
     PtrList<Function> &get_functions();
     void add_global_variable(Ptr<GlobalVariable> g);
-    void add_types(Ptr<Type> t) { all_types_.push_back(t); }
+    void add_type(Ptr<Type> t) { all_types_.push_back(t); }
     void add_constant(Ptr<Constant> c) { all_constants_.push_back(c); }
     PtrList<GlobalVariable> &get_global_variable();
     std::string get_instr_op_name( Instruction::OpID instr ) { return instr_id2string_[instr]; }

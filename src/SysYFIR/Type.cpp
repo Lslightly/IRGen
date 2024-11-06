@@ -16,7 +16,7 @@ Type::Type(TypeID tid, Ptr<Module> m)
 }
 
 void Type::init(TypeID tid, Ptr<Module> m) {
-    m->add_types(shared_from_this());
+    m->add_type(shared_from_this());
 }
 
 Ptr<Type> Type::create(TypeID tid, Ptr<Module> m)
