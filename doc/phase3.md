@@ -6,10 +6,19 @@
 **本关任务**：编写[IRBuilder.cpp](../src/SysYFIRBuilder/IRBuilder.cpp)文件，实现低级中间代码生成器，为SysYF语言程序生成兼容的LLVM IR代码。
 
 ### 相关知识
+
+#### SysYF语言定义
+
+SysYF语言定义见`SysYF语言定义.pdf`。该文档包含了部分语义说明(如同名标识符的约定等)。
+
+> 同第二关，为了减小实验难度，本实验中限制数组只能是一维数组，并且声明的数组长度必须是单个字面量数字，不能是其他表达式。但是访问数组元素时下标可以使用复杂的表达式。
+
 #### 实验框架
+
 本实训项目提供用C++语言编写的SysYF IR 应用编程库，用于构建LLVM IR的子集。为了简化你的实验，本实训的实验框架代码已完成了SysYF源程序到 C++ 上的抽象语法树的转换。
 
 ##### Scope
+
 在[IRBuilder.h](../include/SysYFIRBuilder/IRBuilder.h)中，还定义了一个用于存储作用域的类`Scope`。它的作用是在遍历语法树时，辅助管理不同作用域中的变量。它提供了以下接口：
 ```cpp
 // 进入一个新的作用域
@@ -111,9 +120,9 @@ make
 
 AddressSanitizer 是一个内存错误检测器，它可以检测出如下 Bug：
 
-    * 对堆、栈和全局变量的越界访问
-    * 释放后使用（use-after-free）
-    * 多次释放 （Double Free）
+* 对堆、栈和全局变量的越界访问
+* 释放后使用（use-after-free）
+* 多次释放 （Double Free）
 
 #### 链接SysYF库
 
