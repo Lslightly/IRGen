@@ -22,25 +22,27 @@ sudo apt install clang llvm
 
 #### 安装Clang与LLVM(release包安装)
 
-可以通过[github release](https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz)或者[睿客网链接](https://rec.ustc.edu.cn/share/4bb3a5a0-9782-11ef-94e5-71aad678f9ad)下载release包。
+可以通过[github release](https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz)或者[睿客网链接](https://rec.ustc.edu.cn/share/612f1020-9d83-11ef-ae41-c75fbe23e059)下载release包。
 
 ```bash
 # 下载clang+llvm release包，也可以通过睿客网下载
-wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
 
 export INSTALL_DIR=./ # 你可以设置其他路径
 mkdir -p $INSTALL_DIR
-tar -xvf clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz --directory=$INSTALL_DIR
+tar -xvf clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz --directory=$INSTALL_DIR
 cd $INSTALL_DIR
-mv clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04 clang+llvm-14.0.0
-export PATH=$(pwd)/clang+llvm-14.0.0/bin:$PATH
-which clang # 应该输入你刚刚安装的clang所在的路径
+mv clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz clang+llvm-10.0.1
+export PATH=$(pwd)/clang+llvm-10.0.1/bin:$PATH # 可以将其加到~/.bashrc中（此时需要将$(pwd)替换为绝对路径）
+export LD_LIBRARY_PATH=$(pwd)/clang+llvm-10.0.1/lib:$LD_LIBRARY_PATH # 可以将其加到~/.bashrc中（此时需要将$(pwd)替换为绝对路径）
+export LIBRARY_PATH=$(pwd)/clang+llvm-10.0.1/lib:$LIBRARY_PATH # 可以将其加到~/.bashrc中（此时需要将$(pwd)替换为绝对路径）
+which clang # 应该输出你刚刚安装的clang所在的路径
 ```
 #### clang, llvm版本检查
 
 ```bash
-clang --version # 版本应该大于等于10.0.1
-lli --version # 版本应该大于等于10.0.1
+clang --version # 版本应该等于10.0.1
+lli --version # 版本应该等于10.0.1
 ```
 
 ## IDE配置
