@@ -65,18 +65,33 @@ git分支管理可以参考[教程](https://liaoxuefeng.com/books/git/branch/ind
 
 对于最后一关，由于头歌平台的分组作业功能暂时无法使用，因此推荐采用头歌平台评测+[git.lug.ustc.edu.cn gitlab](https://git.lug.ustc.edu.cn/)分工协作的方式进行本地实验。下面是使用指南：
 
-1. 在[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)中创建**私有**空白仓库，**注意取消勾选**`Initialize repository with a README`，并在Manage>Members中邀请成员。以下假设gitlab clone地址为`<gitlab_url>`。创建示例见下图。
+1. 在[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)中创建**私有**空白仓库(注意不要在有非同组成员的group下创建仓库)，**注意取消勾选**`Initialize repository with a README`，并在Manage>Members中邀请成员，注意设置成员为Maintainer角色。以下假设gitlab clone地址为`<gitlab_url>`。创建示例见下图。
 
 ![](figs/gitlabCreateProject.png)
 
-2. 组长在头歌平台中通过`git clone <组长的educoder_url>`clone仓库到本地。
-3. 组长通过`git remote set-url origin <gitlab_url>`将origin地址设置为`<gitlab_url>`，然后通过`git push -u origin master`将代码push到gitlab(只需要成功执行一次即可，这里是为了通过`-u`设置master的上游分支。在成功执行后，后续push只需要使用`git push`命令即可，不需要再使用`-u`选项)。origin地址是push的默认地址，`git push`会默认push到origin仓库中，详见`git push --help`
-4. 所有人可以`git clone <gitlab_url>`克隆仓库到本地进行开发，然后通过`git push`基于gitlab进行协作开发。
-5. 在需要评测时，组长通过`git remote add educoder <组长的educoder_url>`添加头歌平台的`<组长的educoder_url>`为remote地址，在需要评测时可以通过`git push educoder master`将代码push到头歌平台，点击评测按钮进行评测。
+> 你也可以通过创建group防止每次创建仓库时都需要重新邀请成员。具体步骤为:
+>
+> 1. 创建分组
+>
+> ![](./figs/createGroup.png)
+>
+> 2. 在分组中邀请成员，注意设置成员角色为Maintainer
+>
+> ![](./figs/inviteMembers.png)
+>
+> 3. 在group中创建私有仓库
+>
+> ![](./figs/groupCreateProject.png)
+> 
 
-另外在gitlab的issue讨论区可以仿照[course issues](https://git.lug.ustc.edu.cn/compiler/course/-/issues)记录遇到的问题。同时也可以使用Plan > Milestones功能制定项目阶段性目标。如果有时间，你也可以尝试使用[持续集成CI功能](https://docs.gitlab.com/ee/ci/index.html)。
+1. 组长在头歌平台中通过`git clone <组长的educoder_url>`clone仓库到本地。
+2. 组长通过`git remote set-url origin <gitlab_url>`将origin地址设置为`<gitlab_url>`，然后通过`git push -u origin master`将代码push到gitlab(只需要成功执行一次即可，这里是为了通过`-u`设置master的上游分支。在成功执行后，后续push只需要使用`git push`命令即可，不需要再使用`-u`选项)。origin地址是push的默认地址，`git push`会默认push到origin仓库中，详见`git push --help`
+3. 所有人可以`git clone <gitlab_url>`克隆仓库到本地进行开发，然后通过`git push`基于gitlab进行协作开发。
+4. 在需要评测时，组长通过`git remote add educoder <组长的educoder_url>`添加头歌平台的`<组长的educoder_url>`为remote地址，在需要评测时可以通过`git push educoder master`将代码push到头歌平台，点击评测按钮进行评测。
 
 一些原理：
 
 你可以通过`git remote add <name> <url>`添加名称为`<name>`的remote地址`<url>`。使用`git clone <url>`时会自动创建名称为`origin`的默认远端地址，可以通过`git remote -v`查看。假设你要使用gitlab，需要添加名称为`gitlab`的远端地址，可以通过`git remote add gitlab <url>`方式添加远端地址。使用`git push <name> <branchName>`即可将内容push到`<name>`所代表的remote仓库中的`<branchName>`分支。在第一次push时，你可能需要使用`git push -u <name> <branchName>`的`-u`选项设置本地分支的上游分支。
+
+> 另外在项目的issue讨论区可以仿照[course issues](https://git.lug.ustc.edu.cn/compiler/course/-/issues)记录遇到的问题。同时也可以使用Plan > Milestones功能制定项目阶段性目标。如果有时间，你也可以尝试使用[持续集成CI功能](https://docs.gitlab.com/ee/ci/index.html)。GitHub中包含类似的更强大的功能，见[GitHub Actions Doc](https://docs.github.com/en/actions)。
 
