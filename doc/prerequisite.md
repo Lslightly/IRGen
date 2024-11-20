@@ -88,6 +88,8 @@ git分支管理可以参考[教程](https://liaoxuefeng.com/books/git/branch/ind
 2. 组长通过`git remote set-url origin <gitlab_url>`将origin地址设置为`<gitlab_url>`，然后通过`git push -u origin master`将代码push到gitlab(只需要成功执行一次即可，这里是为了通过`-u`设置master的上游分支。在成功执行后，后续push只需要使用`git push`命令即可，不需要再使用`-u`选项)。origin地址是push的默认地址，`git push`会默认push到origin仓库中，详见`git push --help`
 3. 所有人可以`git clone <gitlab_url>`克隆仓库到本地进行开发，然后通过`git push`基于gitlab进行协作开发。
 4. 在需要评测时，组长通过`git remote add educoder <组长的educoder_url>`添加头歌平台的`<组长的educoder_url>`为remote地址，在需要评测时可以通过`git push educoder master`将代码push到头歌平台，点击评测按钮进行评测。
+5. 若头歌平台的上游仓库存在更新，可以通过`git pull educoder master`拉取头歌平台的更新。
+   1. 如果出现`You have divergent branches and need to specify how to reconcile them.`报错，可以通过`git config pull.rebase false`设置使用merge策略。然后再使用`git pull educoder master`即可拉取并合并助教的代码更新。
 
 一些原理：
 
