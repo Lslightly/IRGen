@@ -65,7 +65,7 @@ git分支管理可以参考[教程](https://liaoxuefeng.com/books/git/branch/ind
 
 对于最后一关，由于头歌平台的分组作业功能暂时无法使用，因此推荐采用头歌平台评测+[git.lug.ustc.edu.cn gitlab](https://git.lug.ustc.edu.cn/)分工协作的方式进行本地实验。下面是使用指南：
 
-1. 在[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)中创建**私有**空白仓库(注意不要在有非同组成员的group下创建仓库)，**注意取消勾选**`Initialize repository with a README`，并在Manage>Members中邀请成员，注意设置成员为Maintainer角色。以下假设gitlab clone地址为`<gitlab_url>`。创建示例见下图。
+1. 在[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)中创建**私有**空白仓库(注意不要在有非同组成员的group下创建仓库)，**注意取消勾选**`Initialize repository with a README`，并在Manage>Members中邀请成员，注意设置成员为Maintainer角色。创建示例见下图。
 
 ![](figs/gitlabCreateProject.png)
 
@@ -83,6 +83,14 @@ git分支管理可以参考[教程](https://liaoxuefeng.com/books/git/branch/ind
 >
 > ![](./figs/groupCreateProject.png)
 > 
+
+以下假设`<gitlab_url>`为[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)的clone地址。`<educoder_url>`为组长的头歌平台账户仓库的url。
+
+`<gitlab_url>`如下图红框所示。使用HTTPS方式clone仓库时需要使用[git.lug.ustc.edu.cn](https://git.lug.ustc.edu.cn/)的账户密码进行登录。
+
+![](./figs/gitlabURL.png)
+
+> 为了防止每次`git pull`, `git push`都需要输入密码，你可以通过`git config --global credential.helper store`记住密码。在clone/pull/push等一次操作输入密码之后，密码就会被git记住，之后的操作就不需要再使用密码了。或者你也可以使用SSH方式clone仓库。这需要你提前将SSH public key上传到gitlab的用户设置>SSH Keys中。可以参考[教程](https://blog.csdn.net/xyzchenxiaolin/article/details/51852333)。
 
 1. 组长在头歌平台中通过`git clone <组长的educoder_url>`clone仓库到本地。
 2. 组长通过`git remote set-url origin <gitlab_url>`将origin地址设置为`<gitlab_url>`，然后通过`git push -u origin master`将代码push到gitlab(只需要成功执行一次即可，这里是为了通过`-u`设置master的上游分支。在成功执行后，后续push只需要使用`git push`命令即可，不需要再使用`-u`选项)。origin地址是push的默认地址，`git push`会默认push到origin仓库中，详见`git push --help`
