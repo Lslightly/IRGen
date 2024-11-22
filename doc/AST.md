@@ -12,7 +12,11 @@ AST中使用的指针类型。实际上是`std::shared_ptr`
 
 ## PtrList
 
-存放[Ptr](#ptr)的list，实际上是`std::vector<Ptr>`
+存放[Ptr](#ptr)的list，实际上是`std::list<Ptr>`
+
+## PtrVec
+
+存放[Ptr](#ptr)的vector，实际上是`std::vector<Ptr>`
 
 ## Position
 
