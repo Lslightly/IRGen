@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.15)
 
 project(SysYFCompiler)
 
@@ -23,6 +23,15 @@ else()
     message(WARNING "Unknown build type: ${CMAKE_BUILD_TYPE}. Using default flags.")
 endif()
 
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 # for ninja color, see https://stackoverflow.com/questions/73349743/ninja-build-system-gcc-clang-doesnt-output-diagnostic-colors
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=always")
 
@@ -42,6 +51,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/Frontend)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYFIR)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/SysYFIRBuilder)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Student/task2)
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/unittest)
 
 add_executable(
   SysYFCompiler
