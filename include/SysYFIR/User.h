@@ -32,7 +32,6 @@ protected:
 
 private:
     std::vector<std::weak_ptr<Value>> operands_;   // operands of this value
-    unsigned num_ops_;
 };
 
 }
